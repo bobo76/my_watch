@@ -1,0 +1,34 @@
+# Monkey C / Connect IQ / Garmin Watch Face .gitignore
+
+# Binaries and build output
+/bin/
+/build/
+/output/
+
+# SDK/device-specific (Monkey C .prg and .barrel files)
+*.prg
+*.barrel
+
+# Monkey Barrel logs and temporary files
+*.log
+
+# Monkey C intermediate artifact files
+*.mir
+
+# VS Code settings (if using VS Code)
+.vscode/
+
+# Private developer key (never commit this)
+developer_key.der
+
+# Garmin Connect-IQ auto-generated resource files
+/resources/generated/
+/resources/output/
+
+# Device configuration/connection cache (if present)
+config.json
+
+# (Optional) ignore all personal test scripts or notes
+*.bak
+*.swp
+*.tmp

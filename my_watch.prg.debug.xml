@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/home/bobo/dev/garmin/key/my_watch/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="1" lineNum="9" parent="globals/my_watchView" pc="268435457" symbol="&lt;init&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="2" lineNum="31" parent="globals" pc="268435476" symbol="getApp"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="2" lineNum="32" parent="globals" pc="268435486" symbol="getApp"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="3" lineNum="6" parent="globals/Background" pc="268435502" symbol="&lt;init&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/gen/006-B3077-00/source/Rez.mcgen" id="4" lineNum="7" parent="globals/Rez" pc="268435521" symbol="&lt;init&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="5" lineNum="5" parent="globals/my_watchApp" pc="268435545" symbol="&lt;init&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="6" lineNum="56" parent="globals/my_watchView" pc="268435564" symbol="onExitSleep"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="6" lineNum="57" parent="globals/my_watchView" pc="268435566" symbol="onExitSleep"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="7" lineNum="27" parent="globals/my_watchView" pc="268435577" symbol="onShow"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="7" lineNum="28" parent="globals/my_watchView" pc="268435579" symbol="onShow"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="8" lineNum="20" parent="globals/my_watchView" pc="268435590" symbol="onLayout"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="8" lineNum="21" parent="globals/my_watchView" pc="268435592" symbol="onLayout"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="9" lineNum="61" parent="globals/my_watchView" pc="268435634" symbol="onEnterSleep"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="9" lineNum="62" parent="globals/my_watchView" pc="268435636" symbol="onEnterSleep"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="10" lineNum="13" parent="globals/my_watchView" pc="268435647" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="10" lineNum="14" parent="globals/my_watchView" pc="268435649" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="10" lineNum="15" parent="globals/my_watchView" pc="268435667" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="10" lineNum="16" parent="globals/my_watchView" pc="268435697" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="32" parent="globals/my_watchView" pc="268435708" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="33" parent="globals/my_watchView" pc="268435710" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="36" parent="globals/my_watchView" pc="268435722" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="38" parent="globals/my_watchView" pc="268435742" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="39" parent="globals/my_watchView" pc="268435762" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="40" parent="globals/my_watchView" pc="268435782" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="41" parent="globals/my_watchView" pc="268435802" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="42" parent="globals/my_watchView" pc="268435822" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="43" parent="globals/my_watchView" pc="268435842" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="44" parent="globals/my_watchView" pc="268435853" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchView.mc" id="12" lineNum="46" parent="globals/my_watchView" pc="268435873" symbol="onUpdate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="13" lineNum="9" parent="globals/Background" pc="268435894" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="13" lineNum="10" parent="globals/Background" pc="268435898" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="13" lineNum="14" parent="globals/Background" pc="268435919" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="13" lineNum="15" parent="globals/Background" pc="268435939" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="18" parent="globals/Background" pc="268435970" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="19" parent="globals/Background" pc="268435972" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="20" parent="globals/Background" pc="268435992" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="21" parent="globals/Background" pc="268436012" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="22" parent="globals/Background" pc="268436032" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="23" parent="globals/Background" pc="268436052" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="24" parent="globals/Background" pc="268436072" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="25" parent="globals/Background" pc="268436092" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchBackground.mc" id="14" lineNum="26" parent="globals/Background" pc="268436112" symbol="draw"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="102" parent="globals/ModernWatchDrawer" pc="268436133" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="103" parent="globals/ModernWatchDrawer" pc="268436137" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="104" parent="globals/ModernWatchDrawer" pc="268436154" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="105" parent="globals/ModernWatchDrawer" pc="268436206" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="107" parent="globals/ModernWatchDrawer" pc="268436222" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="108" parent="globals/ModernWatchDrawer" pc="268436239" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="15" lineNum="109" parent="globals/ModernWatchDrawer" pc="268436261" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="44" parent="globals/ModernWatchDrawer" pc="268436348" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="45" parent="globals/ModernWatchDrawer" pc="268436352" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="46" parent="globals/ModernWatchDrawer" pc="268436380" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="47" parent="globals/ModernWatchDrawer" pc="268436397" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="48" parent="globals/ModernWatchDrawer" pc="268436407" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="50" parent="globals/ModernWatchDrawer" pc="268436423" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="51" parent="globals/ModernWatchDrawer" pc="268436434" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="52" parent="globals/ModernWatchDrawer" pc="268436444" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="53" parent="globals/ModernWatchDrawer" pc="268436455" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="55" parent="globals/ModernWatchDrawer" pc="268436465" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="59" parent="globals/ModernWatchDrawer" pc="268436472" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="60" parent="globals/ModernWatchDrawer" pc="268436490" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="61" parent="globals/ModernWatchDrawer" pc="268436512" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="62" parent="globals/ModernWatchDrawer" pc="268436528" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="63" parent="globals/ModernWatchDrawer" pc="268436544" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="64" parent="globals/ModernWatchDrawer" pc="268436554" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="65" parent="globals/ModernWatchDrawer" pc="268436574" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="66" parent="globals/ModernWatchDrawer" pc="268436584" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="68" parent="globals/ModernWatchDrawer" pc="268436594" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="69" parent="globals/ModernWatchDrawer" pc="268436602" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="71" parent="globals/ModernWatchDrawer" pc="268436624" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="74" parent="globals/ModernWatchDrawer" pc="268436646" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="76" parent="globals/ModernWatchDrawer" pc="268436666" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="77" parent="globals/ModernWatchDrawer" pc="268436688" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="78" parent="globals/ModernWatchDrawer" pc="268436705" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="16" lineNum="79" parent="globals/ModernWatchDrawer" pc="268436725" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="126" parent="globals/ModernWatchDrawer" pc="268436756" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="127" parent="globals/ModernWatchDrawer" pc="268436760" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="128" parent="globals/ModernWatchDrawer" pc="268436777" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="129" parent="globals/ModernWatchDrawer" pc="268436793" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="130" parent="globals/ModernWatchDrawer" pc="268436800" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="133" parent="globals/ModernWatchDrawer" pc="268436831" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="134" parent="globals/ModernWatchDrawer" pc="268436862" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="137" parent="globals/ModernWatchDrawer" pc="268436893" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="138" parent="globals/ModernWatchDrawer" pc="268436924" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="140" parent="globals/ModernWatchDrawer" pc="268436955" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="141" parent="globals/ModernWatchDrawer" pc="268436977" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="17" lineNum="142" parent="globals/ModernWatchDrawer" pc="268436994" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="18" lineNum="145" parent="globals/ModernWatchDrawer" pc="268437015" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="18" lineNum="146" parent="globals/ModernWatchDrawer" pc="268437017" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="18" lineNum="147" parent="globals/ModernWatchDrawer" pc="268437039" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="18" lineNum="149" parent="globals/ModernWatchDrawer" pc="268437072" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="18" lineNum="150" parent="globals/ModernWatchDrawer" pc="268437089" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="18" lineNum="151" parent="globals/ModernWatchDrawer" pc="268437111" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="114" parent="globals/ModernWatchDrawer" pc="268437145" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="115" parent="globals/ModernWatchDrawer" pc="268437149" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="116" parent="globals/ModernWatchDrawer" pc="268437166" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="117" parent="globals/ModernWatchDrawer" pc="268437212" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="119" parent="globals/ModernWatchDrawer" pc="268437228" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="120" parent="globals/ModernWatchDrawer" pc="268437245" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="19" lineNum="121" parent="globals/ModernWatchDrawer" pc="268437267" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="84" parent="globals/ModernWatchDrawer" pc="268437354" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="85" parent="globals/ModernWatchDrawer" pc="268437358" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="88" parent="globals/ModernWatchDrawer" pc="268437380" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="89" parent="globals/ModernWatchDrawer" pc="268437415" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="91" parent="globals/ModernWatchDrawer" pc="268437675" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="92" parent="globals/ModernWatchDrawer" pc="268437699" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="93" parent="globals/ModernWatchDrawer" pc="268437712" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="94" parent="globals/ModernWatchDrawer" pc="268437725" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="95" parent="globals/ModernWatchDrawer" pc="268437744" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="96" parent="globals/ModernWatchDrawer" pc="268437793" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="20" lineNum="98" parent="globals/ModernWatchDrawer" pc="268437845" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="21" lineNum="195" parent="globals/ModernWatchDrawer" pc="268437887" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="21" lineNum="196" parent="globals/ModernWatchDrawer" pc="268437891" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="21" lineNum="197" parent="globals/ModernWatchDrawer" pc="268437922" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="21" lineNum="198" parent="globals/ModernWatchDrawer" pc="268437953" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="21" lineNum="199" parent="globals/ModernWatchDrawer" pc="268437984" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="21" lineNum="201" parent="globals/ModernWatchDrawer" pc="268438015" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="15" parent="globals/ModernWatchDrawer" pc="268438036" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="16" parent="globals/ModernWatchDrawer" pc="268438038" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="17" parent="globals/ModernWatchDrawer" pc="268438057" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="18" parent="globals/ModernWatchDrawer" pc="268438076" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="19" parent="globals/ModernWatchDrawer" pc="268438098" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="20" parent="globals/ModernWatchDrawer" pc="268438120" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="23" lineNum="21" parent="globals/ModernWatchDrawer" pc="268438173" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="154" parent="globals/ModernWatchDrawer" pc="268438188" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="155" parent="globals/ModernWatchDrawer" pc="268438192" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="156" parent="globals/ModernWatchDrawer" pc="268438229" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="157" parent="globals/ModernWatchDrawer" pc="268438263" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="158" parent="globals/ModernWatchDrawer" pc="268438295" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="159" parent="globals/ModernWatchDrawer" pc="268438321" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="160" parent="globals/ModernWatchDrawer" pc="268438350" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="161" parent="globals/ModernWatchDrawer" pc="268438379" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="162" parent="globals/ModernWatchDrawer" pc="268438398" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="164" parent="globals/ModernWatchDrawer" pc="268438414" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="165" parent="globals/ModernWatchDrawer" pc="268438436" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="166" parent="globals/ModernWatchDrawer" pc="268438464" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="167" parent="globals/ModernWatchDrawer" pc="268438481" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="168" parent="globals/ModernWatchDrawer" pc="268438500" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="169" parent="globals/ModernWatchDrawer" pc="268438537" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/modernWatchDrawer.mc" id="24" lineNum="170" parent="globals/ModernWatchDrawer" pc="268438544" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="95" parent="globals/ClassicWatchDrawer" pc="268438574" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="96" parent="globals/ClassicWatchDrawer" pc="268438578" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="97" parent="globals/ClassicWatchDrawer" pc="268438631" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="98" parent="globals/ClassicWatchDrawer" pc="268438648" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="99" parent="globals/ClassicWatchDrawer" pc="268438700" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="101" parent="globals/ClassicWatchDrawer" pc="268438710" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="102" parent="globals/ClassicWatchDrawer" pc="268438727" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="25" lineNum="103" parent="globals/ClassicWatchDrawer" pc="268438749" symbol="drawHourHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="41" parent="globals/ClassicWatchDrawer" pc="268438836" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="42" parent="globals/ClassicWatchDrawer" pc="268438840" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="45" parent="globals/ClassicWatchDrawer" pc="268438902" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="46" parent="globals/ClassicWatchDrawer" pc="268438920" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="48" parent="globals/ClassicWatchDrawer" pc="268438942" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="49" parent="globals/ClassicWatchDrawer" pc="268438958" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="50" parent="globals/ClassicWatchDrawer" pc="268438984" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="52" parent="globals/ClassicWatchDrawer" pc="268438988" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="53" parent="globals/ClassicWatchDrawer" pc="268439018" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="55" parent="globals/ClassicWatchDrawer" pc="268439040" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="56" parent="globals/ClassicWatchDrawer" pc="268439071" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="57" parent="globals/ClassicWatchDrawer" pc="268439102" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="58" parent="globals/ClassicWatchDrawer" pc="268439133" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="26" lineNum="60" parent="globals/ClassicWatchDrawer" pc="268439164" symbol="drawTicher"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="21" parent="globals/ClassicWatchDrawer" pc="268439198" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="22" parent="globals/ClassicWatchDrawer" pc="268439202" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="23" parent="globals/ClassicWatchDrawer" pc="268439219" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="24" parent="globals/ClassicWatchDrawer" pc="268439229" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="25" parent="globals/ClassicWatchDrawer" pc="268439245" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="27" parent="globals/ClassicWatchDrawer" pc="268439276" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="28" parent="globals/ClassicWatchDrawer" pc="268439302" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="29" parent="globals/ClassicWatchDrawer" pc="268439324" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="31" parent="globals/ClassicWatchDrawer" pc="268439381" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="32" parent="globals/ClassicWatchDrawer" pc="268439392" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="33" parent="globals/ClassicWatchDrawer" pc="268439417" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="34" parent="globals/ClassicWatchDrawer" pc="268439428" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="36" parent="globals/ClassicWatchDrawer" pc="268439453" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="27" lineNum="38" parent="globals/ClassicWatchDrawer" pc="268439475" symbol="drawBatteryLevel"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="121" parent="globals/ClassicWatchDrawer" pc="268439530" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="122" parent="globals/ClassicWatchDrawer" pc="268439534" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="123" parent="globals/ClassicWatchDrawer" pc="268439587" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="124" parent="globals/ClassicWatchDrawer" pc="268439604" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="125" parent="globals/ClassicWatchDrawer" pc="268439635" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="127" parent="globals/ClassicWatchDrawer" pc="268439645" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="128" parent="globals/ClassicWatchDrawer" pc="268439662" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="28" lineNum="129" parent="globals/ClassicWatchDrawer" pc="268439684" symbol="drawSecondHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="29" lineNum="134" parent="globals/ClassicWatchDrawer" pc="268439771" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="29" lineNum="135" parent="globals/ClassicWatchDrawer" pc="268439773" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="29" lineNum="136" parent="globals/ClassicWatchDrawer" pc="268439795" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="29" lineNum="138" parent="globals/ClassicWatchDrawer" pc="268439828" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="29" lineNum="139" parent="globals/ClassicWatchDrawer" pc="268439845" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="29" lineNum="140" parent="globals/ClassicWatchDrawer" pc="268439867" symbol="drawCenterCircle"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="108" parent="globals/ClassicWatchDrawer" pc="268439901" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="109" parent="globals/ClassicWatchDrawer" pc="268439905" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="110" parent="globals/ClassicWatchDrawer" pc="268439958" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="111" parent="globals/ClassicWatchDrawer" pc="268439975" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="112" parent="globals/ClassicWatchDrawer" pc="268440021" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="114" parent="globals/ClassicWatchDrawer" pc="268440031" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="115" parent="globals/ClassicWatchDrawer" pc="268440048" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="30" lineNum="116" parent="globals/ClassicWatchDrawer" pc="268440070" symbol="drawMinuteHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="64" parent="globals/ClassicWatchDrawer" pc="268440157" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="66" parent="globals/ClassicWatchDrawer" pc="268440161" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="68" parent="globals/ClassicWatchDrawer" pc="268440217" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="72" parent="globals/ClassicWatchDrawer" pc="268440239" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="73" parent="globals/ClassicWatchDrawer" pc="268440268" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="75" parent="globals/ClassicWatchDrawer" pc="268440522" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="76" parent="globals/ClassicWatchDrawer" pc="268440546" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="77" parent="globals/ClassicWatchDrawer" pc="268440559" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="78" parent="globals/ClassicWatchDrawer" pc="268440572" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="80" parent="globals/ClassicWatchDrawer" pc="268440591" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="81" parent="globals/ClassicWatchDrawer" pc="268440634" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="31" lineNum="84" parent="globals/ClassicWatchDrawer" pc="268440686" symbol="drawHours"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="32" lineNum="88" parent="globals/ClassicWatchDrawer" pc="268440728" symbol="drawHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="32" lineNum="89" parent="globals/ClassicWatchDrawer" pc="268440730" symbol="drawHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="32" lineNum="90" parent="globals/ClassicWatchDrawer" pc="268440744" symbol="drawHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="32" lineNum="91" parent="globals/ClassicWatchDrawer" pc="268440758" symbol="drawHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="32" lineNum="92" parent="globals/ClassicWatchDrawer" pc="268440772" symbol="drawHands"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="34" lineNum="13" parent="globals/ClassicWatchDrawer" pc="268440787" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="34" lineNum="14" parent="globals/ClassicWatchDrawer" pc="268440789" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="34" lineNum="15" parent="globals/ClassicWatchDrawer" pc="268440808" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="34" lineNum="16" parent="globals/ClassicWatchDrawer" pc="268440827" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="34" lineNum="17" parent="globals/ClassicWatchDrawer" pc="268440849" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="34" lineNum="18" parent="globals/ClassicWatchDrawer" pc="268440871" symbol="initVars"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="143" parent="globals/ClassicWatchDrawer" pc="268440886" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="144" parent="globals/ClassicWatchDrawer" pc="268440890" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="145" parent="globals/ClassicWatchDrawer" pc="268440927" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="147" parent="globals/ClassicWatchDrawer" pc="268440962" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="148" parent="globals/ClassicWatchDrawer" pc="268440981" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="149" parent="globals/ClassicWatchDrawer" pc="268441001" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="151" parent="globals/ClassicWatchDrawer" pc="268441054" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="152" parent="globals/ClassicWatchDrawer" pc="268441076" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="153" parent="globals/ClassicWatchDrawer" pc="268441134" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/classicWatchDrawer.mc" id="35" lineNum="154" parent="globals/ClassicWatchDrawer" pc="268441151" symbol="drawDate"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="37" lineNum="25" parent="globals/my_watchApp" pc="268441221" symbol="onSettingsChanged"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="37" lineNum="26" parent="globals/my_watchApp" pc="268441223" symbol="onSettingsChanged"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="38" lineNum="20" parent="globals/my_watchApp" pc="268441240" symbol="getInitialView"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="38" lineNum="21" parent="globals/my_watchApp" pc="268441242" symbol="getInitialView"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="39" lineNum="7" parent="globals/my_watchApp" pc="268441279" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/source/my_watchApp.mc" id="39" lineNum="8" parent="globals/my_watchApp" pc="268441281" symbol="initialize"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/gen/006-B3077-00/source/Rez.mcgen" id="41" lineNum="13" parent="globals/Rez/Layouts" pc="268441300" symbol="WatchFace"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/gen/006-B3077-00/source/Rez.mcgen" id="41" lineNum="14" parent="globals/Rez/Layouts" pc="268441312" symbol="WatchFace"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/gen/006-B3077-00/source/Rez.mcgen" id="41" lineNum="16" parent="globals/Rez/Layouts" pc="268441340" symbol="WatchFace"/>
+        <entry filename="/home/bobo/dev/garmin/key/my_watch/gen/006-B3077-00/source/Rez.mcgen" id="41" lineNum="18" parent="globals/Rez/Layouts" pc="268441493" symbol="WatchFace"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="18" method="true" symbol="drawHourHands"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="17" method="true" symbol="drawDate"/>
+        <entry id="8389683" method="true" symbol="onSettingsChanged"/>
+        <entry field="true" id="37" symbol="ColorRed"/>
+        <entry field="true" id="11" symbol="drawer"/>
+        <entry id="28" method="true" symbol="drawBatteryLevel"/>
+        <entry field="true" id="25" symbol="maxRadius"/>
+        <entry field="true" id="40" symbol="MilitaryFormatTitle"/>
+        <entry id="8388924" module="true" symbol="Gregorian"/>
+        <entry id="21" method="true" symbol="drawSecondHands"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="34" symbol="ColorBlue"/>
+        <entry id="24" method="true" symbol="initVars"/>
+        <entry field="true" id="31" symbol="AppName"/>
+        <entry id="5" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry id="7" object="true" symbol="ModernWatchDrawer"/>
+        <entry id="15" method="true" symbol="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry id="8389375" method="true" object="true" symbol="WatchFace"/>
+        <entry field="true" id="8389065" symbol="locY"/>
+        <entry field="true" id="8389064" symbol="locX"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry id="16" method="true" symbol="drawCenterCircle"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry field="true" id="35" symbol="ColorDarkGray"/>
+        <entry id="4" module="true" symbol="globals/Rez/Layouts"/>
+        <entry id="6" object="true" symbol="ClassicWatchDrawer"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry id="8389376" method="true" symbol="onEnterSleep"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry field="true" id="14" symbol="cy"/>
+        <entry field="true" id="13" symbol="cx"/>
+        <entry field="true" id="38" symbol="ColorWhite"/>
+        <entry field="true" id="33" symbol="ColorBlack"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="20" method="true" symbol="drawMinuteHands"/>
+        <entry id="8389377" method="true" symbol="onExitSleep"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="8389068" method="true" symbol="draw"/>
+        <entry field="true" id="30" symbol="LauncherIcon"/>
+        <entry id="22" method="true" symbol="drawTicher"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry field="true" id="32" symbol="BackgroundColorTitle"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8390146" module="true" object="true" symbol="Background"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="12" symbol="batteryArcWidth"/>
+        <entry field="true" id="36" symbol="ColorLightGray"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="19" method="true" symbol="drawHours"/>
+        <entry field="true" id="8389347" symbol="color"/>
+        <entry field="true" id="39" symbol="ForegroundColorTitle"/>
+        <entry id="9" object="true" symbol="my_watchView"/>
+        <entry id="29" method="true" symbol="drawHands"/>
+        <entry id="27" module="true" symbol="Layouts"/>
+        <entry field="true" id="10" symbol="drawSecondsHand"/>
+        <entry id="8" object="true" symbol="my_watchApp"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="26" symbol="w"/>
+        <entry field="true" id="23" symbol="h"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435633" name="dc" stackId="1" startPc="268435590"/>
+        <entry arg="true" endPc="268435893" name="dc" stackId="1" startPc="268435708"/>
+        <entry endPc="268435968" name="dictionary" stackId="1" startPc="268435898"/>
+        <entry arg="true" endPc="268436132" name="dc" stackId="1" startPc="268435970"/>
+        <entry arg="true" endPc="268436347" name="dc" stackId="1" startPc="268436133"/>
+        <entry endPc="268436346" name="now" stackId="2" startPc="268436137"/>
+        <entry endPc="268436346" name="hourAngle" stackId="3" startPc="268436137"/>
+        <entry endPc="268436346" name="hourLen" stackId="4" startPc="268436137"/>
+        <entry arg="true" endPc="268436755" name="dc" stackId="1" startPc="268436348"/>
+        <entry endPc="268436754" name="radius" stackId="2" startPc="268436352"/>
+        <entry endPc="268436754" name="stats" stackId="3" startPc="268436352"/>
+        <entry endPc="268436754" name="battery" stackId="4" startPc="268436352"/>
+        <entry endPc="268436754" name="batteryAngle" stackId="5" startPc="268436352"/>
+        <entry endPc="268436754" name="batteryColor" stackId="6" startPc="268436352"/>
+        <entry endPc="268436754" name="i" stackId="7" startPc="268436490"/>
+        <entry endPc="268436741" name="angle" stackId="8" startPc="268436490"/>
+        <entry endPc="268436741" name="degre" stackId="9" startPc="268436490"/>
+        <entry endPc="268436741" name="isHour" stackId="10" startPc="268436490"/>
+        <entry endPc="268436741" name="innerR" stackId="11" startPc="268436490"/>
+        <entry endPc="268436741" name="endR" stackId="12" startPc="268436490"/>
+        <entry endPc="268436741" name="squareBegin" stackId="13" startPc="268436490"/>
+        <entry endPc="268436741" name="squareEnd" stackId="14" startPc="268436490"/>
+        <entry arg="true" endPc="268437014" name="dc" stackId="1" startPc="268436756"/>
+        <entry endPc="268437013" name="now" stackId="2" startPc="268436760"/>
+        <entry endPc="268437013" name="secondLen" stackId="3" startPc="268436760"/>
+        <entry endPc="268437013" name="back" stackId="4" startPc="268436760"/>
+        <entry endPc="268437013" name="secondAngle" stackId="5" startPc="268436760"/>
+        <entry endPc="268437013" name="x1" stackId="6" startPc="268436760"/>
+        <entry endPc="268437013" name="y1" stackId="7" startPc="268436760"/>
+        <entry endPc="268437013" name="x2" stackId="8" startPc="268436760"/>
+        <entry endPc="268437013" name="y2" stackId="9" startPc="268436760"/>
+        <entry arg="true" endPc="268437144" name="dc" stackId="1" startPc="268437015"/>
+        <entry arg="true" endPc="268437353" name="dc" stackId="1" startPc="268437145"/>
+        <entry endPc="268437352" name="now" stackId="2" startPc="268437149"/>
+        <entry endPc="268437352" name="minuteAngle" stackId="3" startPc="268437149"/>
+        <entry endPc="268437352" name="minuteLen" stackId="4" startPc="268437149"/>
+        <entry arg="true" endPc="268437886" name="dc" stackId="1" startPc="268437354"/>
+        <entry endPc="268437885" name="fontMidH" stackId="2" startPc="268437358"/>
+        <entry endPc="268437885" name="markers" stackId="3" startPc="268437358"/>
+        <entry endPc="268437885" name="i" stackId="4" startPc="268437699"/>
+        <entry endPc="268437872" name="label" stackId="5" startPc="268437699"/>
+        <entry endPc="268437872" name="angleDeg" stackId="6" startPc="268437699"/>
+        <entry endPc="268437872" name="rad" stackId="7" startPc="268437699"/>
+        <entry endPc="268437872" name="x" stackId="8" startPc="268437699"/>
+        <entry endPc="268437872" name="y" stackId="9" startPc="268437699"/>
+        <entry arg="true" endPc="268438035" name="angle" stackId="1" startPc="268437887"/>
+        <entry arg="true" endPc="268438035" name="innerR" stackId="2" startPc="268437887"/>
+        <entry arg="true" endPc="268438035" name="endR" stackId="3" startPc="268437887"/>
+        <entry arg="true" endPc="268438035" name="dc" stackId="4" startPc="268437887"/>
+        <entry endPc="268438034" name="x1" stackId="5" startPc="268437891"/>
+        <entry endPc="268438034" name="y1" stackId="6" startPc="268437891"/>
+        <entry endPc="268438034" name="x2" stackId="7" startPc="268437891"/>
+        <entry endPc="268438034" name="y2" stackId="8" startPc="268437891"/>
+        <entry arg="true" endPc="268438187" name="dc" stackId="1" startPc="268438036"/>
+        <entry arg="true" endPc="268438573" name="dc" stackId="1" startPc="268438188"/>
+        <entry endPc="268438572" name="info" stackId="2" startPc="268438192"/>
+        <entry endPc="268438572" name="theDate" stackId="3" startPc="268438192"/>
+        <entry endPc="268438572" name="dayWidth" stackId="4" startPc="268438192"/>
+        <entry endPc="268438572" name="dateWidth" stackId="5" startPc="268438192"/>
+        <entry endPc="268438572" name="spaceWidth" stackId="6" startPc="268438192"/>
+        <entry endPc="268438572" name="fontHeight" stackId="7" startPc="268438192"/>
+        <entry endPc="268438572" name="cornerX" stackId="8" startPc="268438192"/>
+        <entry endPc="268438572" name="cornerY" stackId="9" startPc="268438192"/>
+        <entry endPc="268438572" name="dayTotalWidth" stackId="10" startPc="268438192"/>
+        <entry endPc="268438572" name="lineX" stackId="11" startPc="268438192"/>
+        <entry arg="true" endPc="268438835" name="dc" stackId="1" startPc="268438574"/>
+        <entry endPc="268438834" name="radius" stackId="2" startPc="268438578"/>
+        <entry endPc="268438834" name="now" stackId="3" startPc="268438578"/>
+        <entry endPc="268438834" name="hourAngle" stackId="4" startPc="268438578"/>
+        <entry endPc="268438834" name="hourLen" stackId="5" startPc="268438578"/>
+        <entry arg="true" endPc="268439197" name="dc" stackId="1" startPc="268438836"/>
+        <entry endPc="268439196" name="radius" stackId="2" startPc="268438840"/>
+        <entry endPc="268439196" name="i" stackId="3" startPc="268438920"/>
+        <entry endPc="268439183" name="angle" stackId="4" startPc="268438920"/>
+        <entry endPc="268439183" name="isHour" stackId="5" startPc="268438920"/>
+        <entry endPc="268439183" name="innerR" stackId="6" startPc="268438920"/>
+        <entry endPc="268439183" name="endR" stackId="7" startPc="268438920"/>
+        <entry endPc="268439183" name="x1" stackId="8" startPc="268438920"/>
+        <entry endPc="268439183" name="y1" stackId="9" startPc="268438920"/>
+        <entry endPc="268439183" name="x2" stackId="10" startPc="268438920"/>
+        <entry endPc="268439183" name="y2" stackId="11" startPc="268438920"/>
+        <entry arg="true" endPc="268439529" name="dc" stackId="1" startPc="268439198"/>
+        <entry endPc="268439528" name="stats" stackId="2" startPc="268439202"/>
+        <entry endPc="268439528" name="battery" stackId="3" startPc="268439202"/>
+        <entry endPc="268439528" name="angle" stackId="4" startPc="268439202"/>
+        <entry endPc="268439528" name="radius" stackId="5" startPc="268439202"/>
+        <entry arg="true" endPc="268439770" name="dc" stackId="1" startPc="268439530"/>
+        <entry endPc="268439769" name="radius" stackId="2" startPc="268439534"/>
+        <entry endPc="268439769" name="now" stackId="3" startPc="268439534"/>
+        <entry endPc="268439769" name="secondAngle" stackId="4" startPc="268439534"/>
+        <entry endPc="268439769" name="secondLen" stackId="5" startPc="268439534"/>
+        <entry arg="true" endPc="268439900" name="dc" stackId="1" startPc="268439771"/>
+        <entry arg="true" endPc="268440156" name="dc" stackId="1" startPc="268439901"/>
+        <entry endPc="268440155" name="radius" stackId="2" startPc="268439905"/>
+        <entry endPc="268440155" name="now" stackId="3" startPc="268439905"/>
+        <entry endPc="268440155" name="minuteAngle" stackId="4" startPc="268439905"/>
+        <entry endPc="268440155" name="minuteLen" stackId="5" startPc="268439905"/>
+        <entry arg="true" endPc="268440727" name="dc" stackId="1" startPc="268440157"/>
+        <entry endPc="268440726" name="radius" stackId="2" startPc="268440161"/>
+        <entry endPc="268440726" name="fontHeight" stackId="3" startPc="268440161"/>
+        <entry endPc="268440726" name="markers" stackId="4" startPc="268440161"/>
+        <entry endPc="268440726" name="i" stackId="5" startPc="268440546"/>
+        <entry endPc="268440713" name="label" stackId="6" startPc="268440546"/>
+        <entry endPc="268440713" name="angleDeg" stackId="7" startPc="268440546"/>
+        <entry endPc="268440713" name="rad" stackId="8" startPc="268440546"/>
+        <entry endPc="268440713" name="x" stackId="9" startPc="268440546"/>
+        <entry endPc="268440713" name="y" stackId="10" startPc="268440546"/>
+        <entry arg="true" endPc="268440786" name="dc" stackId="1" startPc="268440728"/>
+        <entry arg="true" endPc="268440885" name="dc" stackId="1" startPc="268440787"/>
+        <entry arg="true" endPc="268441220" name="dc" stackId="1" startPc="268440886"/>
+        <entry endPc="268441219" name="info" stackId="2" startPc="268440890"/>
+        <entry endPc="268441219" name="fontWidth" stackId="3" startPc="268440890"/>
+        <entry endPc="268441219" name="theDate" stackId="4" startPc="268440890"/>
+        <entry endPc="268441219" name="fontDim" stackId="5" startPc="268440890"/>
+        <entry endPc="268441219" name="circheRadius" stackId="6" startPc="268440890"/>
+        <entry arg="true" endPc="268441519" name="dc" stackId="1" startPc="268441300"/>
+    </localVars>
+    <deviceInfo deviceVersion="8fc30743a4191ec19bcafa28e3ffcc2b5a958a17" partNumber="006-B3077-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="MilitaryFormatTitle"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="BackgroundColorTitle"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ColorRed"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ColorDarkGray"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ColorWhite"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ForegroundColorTitle"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ColorLightGray"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ColorBlue"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ColorBlack"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="63" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/my_watchView" offset="158" parentId="globals" symbolId="my_watchView" type="class"/>
+        <dataEntry label="globals/Background" offset="269" parentId="globals" symbolId="Background" type="class"/>
+        <dataEntry label="globals/ModernWatchDrawer" offset="332" parentId="globals" symbolId="ModernWatchDrawer" type="class"/>
+        <dataEntry label="globals/Rez" offset="499" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/ClassicWatchDrawer" offset="554" parentId="globals" symbolId="ClassicWatchDrawer" type="class"/>
+        <dataEntry label="globals/my_watchApp" offset="721" parentId="globals" symbolId="my_watchApp" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="800" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="839" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="878" parentId="Rez" symbolId="Strings" type="module"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435475" name="&lt;init&gt;" parent="my_watchView" startPc="268435457">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435501" name="getApp" startPc="268435476">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435520" name="&lt;init&gt;" parent="Background" startPc="268435502">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="ModernWatchDrawer">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435544" name="&lt;init&gt;" parent="Rez" startPc="268435521">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="ClassicWatchDrawer">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435563" name="&lt;init&gt;" parent="my_watchApp" startPc="268435545">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435576" name="onExitSleep" parent="my_watchView" startPc="268435564">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435589" name="onShow" parent="my_watchView" startPc="268435577">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435633" name="onLayout" parent="my_watchView" startPc="268435590">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435646" name="onEnterSleep" parent="my_watchView" startPc="268435634">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435707" name="initialize" parent="my_watchView" startPc="268435647">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onHide" parent="my_watchView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435893" name="onUpdate" parent="my_watchView" startPc="268435708">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435969" name="initialize" parent="Background" startPc="268435894">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436132" name="draw" parent="Background" startPc="268435970">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436347" name="drawHourHands" parent="ModernWatchDrawer" startPc="268436133">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436755" name="drawTicher" parent="ModernWatchDrawer" startPc="268436348">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437014" name="drawSecondHands" parent="ModernWatchDrawer" startPc="268436756">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437144" name="drawCenterCircle" parent="ModernWatchDrawer" startPc="268437015">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437353" name="drawMinuteHands" parent="ModernWatchDrawer" startPc="268437145">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437886" name="drawHours" parent="ModernWatchDrawer" startPc="268437354">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268438035" name="&lt;globals/ModernWatchDrawer/&lt;&gt;drawAngleLine&gt;" parent="ModernWatchDrawer" startPc="268437887">
+            <param id="angle"/>
+            <param id="innerR"/>
+            <param id="endR"/>
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="ModernWatchDrawer">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438187" name="initVars" parent="ModernWatchDrawer" startPc="268438036">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438573" name="drawDate" parent="ModernWatchDrawer" startPc="268438188">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Layouts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438835" name="drawHourHands" parent="ClassicWatchDrawer" startPc="268438574">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439197" name="drawTicher" parent="ClassicWatchDrawer" startPc="268438836">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439529" name="drawBatteryLevel" parent="ClassicWatchDrawer" startPc="268439198">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439770" name="drawSecondHands" parent="ClassicWatchDrawer" startPc="268439530">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439900" name="drawCenterCircle" parent="ClassicWatchDrawer" startPc="268439771">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440156" name="drawMinuteHands" parent="ClassicWatchDrawer" startPc="268439901">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440727" name="drawHours" parent="ClassicWatchDrawer" startPc="268440157">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440786" name="drawHands" parent="ClassicWatchDrawer" startPc="268440728">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="ClassicWatchDrawer">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440885" name="initVars" parent="ClassicWatchDrawer" startPc="268440787">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441220" name="drawDate" parent="ClassicWatchDrawer" startPc="268440886">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStart" parent="my_watchApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441239" name="onSettingsChanged" parent="my_watchApp" startPc="268441221">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441278" name="getInitialView" parent="my_watchApp" startPc="268441240">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441299" name="initialize" parent="my_watchApp" startPc="268441279">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStop" parent="my_watchApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441519" name="WatchFace" parent="Layouts" startPc="268441300">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>
