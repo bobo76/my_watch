@@ -1,14 +1,10 @@
-import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
-import Toybox.System;
 import Toybox.WatchUi;
 
-using Toybox.Graphics as Gfx;
-
 class my_watchView extends WatchUi.WatchFace {
-    var drawer;
-    var drawSecondsHand;
+    var drawer as ModernWatchDrawer;
+    var drawSecondsHand as Boolean;
 
     function initialize() {
         WatchFace.initialize();
@@ -30,20 +26,17 @@ class my_watchView extends WatchUi.WatchFace {
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
-        dc.clear();
-        dc.setAntiAlias(true);
-
-        drawer.initVars(dc);
+        drawer.initializeContext(dc);
         
-        // drawer.drawTicher(dc);
-        // drawer.drawHours(dc);
-        // drawer.drawDate(dc);
+        drawer.drawTicher(dc);
+        drawer.drawHours(dc);
+        drawer.drawDate(dc);
         drawer.drawHourHands(dc);
         drawer.drawMinuteHands(dc);
-        // if(drawSecondsHand) {
-        //     drawer.drawSecondHands(dc);
-        // }
-        drawer.drawCenterCircle(dc);    
+        if(drawSecondsHand) {
+            drawer.drawSecondHands(dc);
+        }
+        drawer.drawCenterCircle(dc);
     }
 
     // Called when this View is removed from the screen. Save the

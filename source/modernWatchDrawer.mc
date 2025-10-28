@@ -12,7 +12,11 @@ class ModernWatchDrawer {
     var cy;
     var maxRadius;
 
-    function initVars(dc as Dc) as Void {
+    function initializeContext(dc as Dc) as Void {
+        dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
+        dc.clear();
+        dc.setAntiAlias(true);
+        
         w = dc.getWidth();
         h = dc.getHeight();
         cx = w / 2;
@@ -20,35 +24,16 @@ class ModernWatchDrawer {
         maxRadius = (w < h ? w : h) / 2;
     }
 
-    // function drawBatteryLevel(dc as Dc) as Void {
-    //     var stats = System.getSystemStats();
-    //     var battery = stats.battery;
-    //     var angle = (battery / 100.0) * 360;
-    //     var radius = w / 2 - batteryArcWidth / 2;
-
-    //     dc.setPenWidth(batteryArcWidth / 2);
-    //     dc.setColor(Gfx.COLOR_DK_GRAY, Gfx.COLOR_BLACK);
-    //     dc.drawArc(w/2, h/2, radius, Gfx.ARC_COUNTER_CLOCKWISE, 0, 360);
-
-    //     if(battery <= 10){
-    //         dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_BLACK);
-    //     } else if(battery <= 20){
-    //         dc.setColor(Gfx.COLOR_YELLOW, Gfx.COLOR_BLACK);
-    //     } else {
-    //         dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_BLACK);
-    //     }
-    //     dc.drawArc(w/2, h/2, radius, Gfx.ARC_COUNTER_CLOCKWISE, 0, angle);
-    // }
-
     function drawTicher(dc as Dc) as Void {
         var radius = maxRadius / 3 * 2 + 2;
         var stats = System.getSystemStats();
         var battery = stats.battery;
         var batteryAngle = (battery / 100.0) * 360;
         var batteryColor;
-        if(battery <= 10){
+        
+        if (battery <= 10) {
             batteryColor = Gfx.COLOR_RED;
-        } else if(battery <= 20){
+        } else if (battery <= 20) {
             batteryColor = Gfx.COLOR_YELLOW;
         } else {
             batteryColor = Gfx.COLOR_GREEN;
@@ -64,7 +49,7 @@ class ModernWatchDrawer {
             var squareBegin = endR + 8;
             var squareEnd = squareBegin + 10;
 
-            if(degre <= batteryAngle) {
+            if (degre <= batteryAngle) {
                 dc.setColor(batteryColor, Gfx.COLOR_TRANSPARENT);
             } else {
                 dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
@@ -72,7 +57,7 @@ class ModernWatchDrawer {
 
             drawAngleLine(angle, innerR, endR, dc);
 
-            if(isHour && i % 15 != 0){
+            if (isHour && i % 15 != 0) {
                 dc.setPenWidth(6);
                 drawAngleLine(angle, squareBegin, squareEnd, dc);
                 dc.setPenWidth(2);
@@ -83,9 +68,14 @@ class ModernWatchDrawer {
     function drawHours(dc as Dc) as Void {
         dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
 
-        // Array of (text, angle)
+        // Array of (text, angle, x offset, y offset)
         var fontMidH = dc.getTextDimensions("6", Gfx.FONT_LARGE)[1] / 2;
-        var markers = [["12", 0, 0, fontMidH], ["3", 90, fontMidH, 0], ["6", 180, 0, fontMidH], ["9", 270, fontMidH, 0]];
+        var markers = [
+            ["12", 0, 0, fontMidH], 
+            ["3", 90, fontMidH, 0], 
+            ["6", 180, 0, fontMidH], 
+            ["9", 270, fontMidH, 0]
+        ];
  
         for (var i = 0; i < markers.size(); i += 1) {
             var label = markers[i][0];
@@ -100,8 +90,8 @@ class ModernWatchDrawer {
 
     function drawHourHands(dc as Dc) as Void {
         var now = System.getClockTime();
-        var hourAngle   = Math.toRadians((now.hour % 12 + now.min / 60.0) * 30);
-        var hourLen   = maxRadius * 0.55;
+        var hourAngle = Math.toRadians((now.hour % 12 + now.min / 60.0) * 30);
+        var hourLen = maxRadius * 0.55;
 
         dc.setPenWidth(5);
         dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
@@ -121,7 +111,7 @@ class ModernWatchDrawer {
             cx + Math.sin(minuteAngle) * minuteLen,
             cy - Math.cos(minuteAngle) * minuteLen);
 
-        // drawDiamondHand(dc, cx, cy, minuteAngle, minuteLen, 10, 6);
+        // drawDiamondHand(dc, cx, cy, minuteAngle, minuteLen, 10, 10);
     }
 
     function drawSecondHands(dc as Dc) as Void {
@@ -171,33 +161,13 @@ class ModernWatchDrawer {
         dc.drawLine(lineX, cornerY, lineX, cornerY + fontHeight - 1);
     }
 
-    // function drawDateRight(dc as Dc) as Void {
-    //     var info = Gregorian.utcInfo(Time.today(), Time.FORMAT_MEDIUM);
-    //     var theDate = info.day_of_week + " " + info.day.toString();
-    //     var dayWidth = dc.getTextDimensions(info.day_of_week, Gfx.FONT_TINY)[0];
-    //     var dateWidth = dc.getTextDimensions(theDate, Gfx.FONT_TINY)[0];
-    //     var spaceWidth = dc.getTextDimensions(" ", Gfx.FONT_TINY)[0];
-    //     var fontHeight = dc.getTextDimensions("31", Gfx.FONT_TINY)[1];
-    //     var cornerX = cx;
-    //     var cornerY = cy;
-
-    //     dc.setColor(Gfx.COLOR_DK_GRAY, Gfx.COLOR_BLACK);
-    //     dc.drawText(cornerX + 8, cornerY - fontHeight / 2, Gfx.FONT_TINY, theDate, Gfx.TEXT_JUSTIFY_LEFT);
-    //     dc.setPenWidth(1);
-    //     var dayTotalWidth = dayWidth +  spaceWidth / 2 + 1;
-    //     var rectY1 = cornerY + 1 - fontHeight / 2;
-    //     dc.drawRoundedRectangle(cornerX + 7, rectY1, dateWidth + 2, fontHeight, 3);
-    //     var lineX = cornerX + 7 + dayTotalWidth;
-    //     dc.drawLine(lineX, rectY1, lineX, cornerY + fontHeight / 2);
-    // }
-
-    function drawDiamondHand(dc, cx, cy, angle, length, width, baseLen) {
+    function drawDiamondHand(dc as Dc, cx as Float, cy as Float, angle as Float, length as Float, width as Float, baseLen as Float) as Void {
         // Calcul des positions des 4 points du losange
         var sinA = Math.sin(angle);
         var cosA = Math.cos(angle);
 
         // Pointe avant
-        var tipX = cx + sinA * length as Float;
+        var tipX = cx + sinA * length;
         var tipY = cy - cosA * length;
 
         // Pointe arrière
@@ -213,6 +183,7 @@ class ModernWatchDrawer {
         var sideY1 = cy - wCos * width / 2;
         var sideX2 = cx - wSin * width / 2;
         var sideY2 = cy + wCos * width / 2;
+
         // Les 4 sommets du polygone (ordre important)
         var points = [
             [tipX, tipY],
@@ -220,7 +191,7 @@ class ModernWatchDrawer {
             [backX, backY],
             [sideX2, sideY2]
         ];
-        dc.setColor(Gfx.COLOR_DK_RED, Gfx.COLOR_WHITE);
+        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_WHITE);
         dc.fillPolygon(points);
     }
 
