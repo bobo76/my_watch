@@ -40,9 +40,9 @@ class ModernWatchDrawer {
     var batteryAngle = (battery / 100.0) * 360;
     var batteryColor;
 
-    if (battery <= 10) {
+    if (battery <= 20) {
       batteryColor = Gfx.COLOR_RED;
-    } else if (battery <= 20) {
+    } else if (battery <= 30) {
       batteryColor = Gfx.COLOR_YELLOW;
     } else {
       batteryColor = Gfx.COLOR_GREEN;
@@ -78,7 +78,7 @@ class ModernWatchDrawer {
 
   function drawBatteryPercent(dc as Dc) as Void {
     var battery = System.getSystemStats().battery;
-    if (battery > 30) {
+    if (battery > 40) {
       return;
     }
     var batteryText = battery.format("%.0f") + " %";
@@ -206,11 +206,11 @@ class ModernWatchDrawer {
 
     dc.setColor(Gfx.COLOR_LT_GRAY, backgroundColor);
     dc.fillRoundedRectangle(
-      cornerX - 2,
+      cornerX - 4,
       cornerY + 1,
-      dateWidth + 4,
-      fontHeight,
-      3
+      dateWidth + 6,
+      fontHeight - 1,
+      4
     );
     dc.setColor(backgroundColor, Gfx.COLOR_TRANSPARENT);
     dc.drawText(cornerX, cornerY, dataFont, theDate, Gfx.TEXT_JUSTIFY_LEFT);
