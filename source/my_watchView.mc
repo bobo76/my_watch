@@ -28,10 +28,10 @@ class my_watchView extends WatchUi.WatchFace {
   function onUpdate(dc as Dc) as Void {
     drawer.initializeContext(dc);
 
-    drawer.drawTicher(dc);
     drawer.drawBatteryPercent(dc);
-    drawer.drawHours(dc);
     drawer.drawDateWithBackground(dc);
+    drawer.drawTicher(dc);
+    drawer.drawHours(dc);
     drawer.drawHourHands(dc);
     drawer.drawMinuteHands(dc);
     if (!onSleep) {
