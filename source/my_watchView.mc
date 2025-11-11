@@ -10,8 +10,6 @@ class my_watchView extends WatchUi.WatchFace {
     WatchFace.initialize();
     drawer = new ModernWatchDrawer();
     onSleep = false;
-
-    // runTests();
   }
 
   // Load your resources here
@@ -32,7 +30,7 @@ class my_watchView extends WatchUi.WatchFace {
 
     drawer.drawBatteryPercent(dc);
     drawer.drawDateWithBackground(dc);
-    drawer.drawTicher(dc);
+    drawer.drawTicker(dc);
     drawer.drawHours(dc);
     drawer.drawHourHands(dc);
     drawer.drawMinuteHands(dc);

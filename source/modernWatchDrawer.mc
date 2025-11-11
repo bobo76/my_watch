@@ -1,24 +1,41 @@
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.System;
 
 using Toybox.Graphics as Gfx;
 using Toybox.Time.Gregorian;
 using Toybox.System as Sys;
 
 class ModernWatchDrawer {
-  var batteryArcWidth = 10;
-  var w;
-  var h;
-  var cx;
-  var cy;
+  // Layout constants
+  var batteryArcWidth as Number = 10;
+  var w as Number = 0;
+  var h as Number = 0;
+  var cx as Number = 0;
+  var cy as Number = 0;
   var maxRadius as Number = 0;
-  var backgroundColor;
-  var dataFont;
+  var backgroundColor as Number = 0x000055;
+  var dataFont as Graphics.FontDefinition = Graphics.FONT_TINY;
 
-  var darkNavyBlue = 0x000022; // Dark Navy Blue
-  var darkOrange = 0xcc6600; // Dark Orange
-  var navyBlue = 0x000055; // Navy Blue
-  var darkMediumBlue = 000066;
+  // Color constants
+  var darkNavyBlue as Number = 0x000022; // Dark Navy Blue
+  var darkOrange as Number = 0xcc6600; // Dark Orange
+  var navyBlue as Number = 0x000055; // Navy Blue
+  var darkMediumBlue as Number = 0x000066; // Dark Medium Blue (was octal, now hex)
+
+  // Drawing constants
+  const TICK_RADIUS_RATIO = 0.66;
+  const HOUR_HAND_LENGTH_RATIO = 0.55;
+  const MINUTE_HAND_LENGTH_RATIO = 0.75;
+  const SECOND_HAND_LENGTH_RATIO = 0.85;
+  const SECOND_HAND_BACK_LENGTH = 15;
+  const HOUR_HAND_WIDTH = 5;
+  const MINUTE_HAND_WIDTH = 3;
+  const SECOND_HAND_WIDTH = 2;
+
+  // Cached system values (updated each frame)
+  var cachedBattery as Float = 100.0;
+  var cachedTime as System.ClockTime?;
 
   function initializeContext(dc as Dc) as Void {
     backgroundColor = navyBlue;
@@ -32,14 +49,17 @@ class ModernWatchDrawer {
     cx = w / 2;
     cy = h / 2;
     maxRadius = (w < h ? w : h) / 2;
+
+    // Cache system values to avoid repeated expensive calls
+    cachedBattery = System.getSystemStats().battery;
+    cachedTime = System.getClockTime();
   }
 
   function drawBatteryPercent(dc as Dc) as Void {
-    var battery = System.getSystemStats().battery;
-    if (!WatchLogic.shouldShowBatteryPercent(battery)) {
+    if (!WatchLogic.shouldShowBatteryPercent(cachedBattery)) {
       return;
     }
-    var batteryText = battery.format("%.0f") + " %";
+    var batteryText = cachedBattery.format("%.0f") + " %";
     var percentWidth = dc.getTextDimensions(batteryText, dataFont)[0];
     dc.setColor(Gfx.COLOR_LT_GRAY, backgroundColor);
 
@@ -72,11 +92,10 @@ class ModernWatchDrawer {
     dc.drawText(cornerX, cornerY, dataFont, theDate, Gfx.TEXT_JUSTIFY_LEFT);
   }
 
-  function drawTicher(dc as Dc) as Void {
-    var radius = (maxRadius / 3) * 2 + 2;
-    var battery = System.getSystemStats().battery;
-    var batteryAngle = WatchLogic.calculateBatteryAngle(battery);
-    var batteryColor = WatchLogic.getBatteryColorModern(battery);
+  function drawTicker(dc as Dc) as Void {
+    var radius = (maxRadius * TICK_RADIUS_RATIO).toNumber() + 2;
+    var batteryAngle = WatchLogic.calculateBatteryAngle(cachedBattery);
+    var batteryColor = WatchLogic.getBatteryColorModern(cachedBattery);
 
     // Draw 60 tick marks
     for (var i = 0; i < 60; i += 1) {
@@ -128,11 +147,13 @@ class ModernWatchDrawer {
   }
 
   function drawHourHands(dc as Dc) as Void {
-    var now = System.getClockTime();
-    var hourAngle = WatchLogic.calculateHourAngle(now.hour, now.min).toNumber();
-    var hourLen = (maxRadius * 0.55).toNumber();
+    var hourAngle = WatchLogic.calculateHourAngle(
+      cachedTime.hour,
+      cachedTime.min
+    ).toNumber();
+    var hourLen = (maxRadius * HOUR_HAND_LENGTH_RATIO).toNumber();
 
-    dc.setPenWidth(5);
+    dc.setPenWidth(HOUR_HAND_WIDTH);
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
     dc.drawLine(
       cx,
@@ -143,11 +164,13 @@ class ModernWatchDrawer {
   }
 
   function drawMinuteHands(dc as Dc) as Void {
-    var now = System.getClockTime();
-    var minuteAngle = WatchLogic.calculateMinuteAngle(now.min, now.sec).toNumber();
-    var minuteLen = (maxRadius * 0.75).toNumber();
+    var minuteAngle = WatchLogic.calculateMinuteAngle(
+      cachedTime.min,
+      cachedTime.sec
+    ).toNumber();
+    var minuteLen = (maxRadius * MINUTE_HAND_LENGTH_RATIO).toNumber();
 
-    dc.setPenWidth(3);
+    dc.setPenWidth(MINUTE_HAND_WIDTH);
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
     dc.drawLine(
       cx,
@@ -158,21 +181,19 @@ class ModernWatchDrawer {
   }
 
   function drawSecondHands(dc as Dc) as Void {
-    var now = System.getClockTime();
-    var secondLen = (maxRadius * 0.85).toNumber(); // your preferred second hand length
-    var back = 15; // how far past the center
-    var secondAngle = WatchLogic.calculateSecondAngle(now.sec);
+    var secondLen = (maxRadius * SECOND_HAND_LENGTH_RATIO).toNumber();
+    var secondAngle = WatchLogic.calculateSecondAngle(cachedTime.sec);
 
     // Start point (behind center)
-    var x1 = centerToX(secondAngle, -back);
-    var y1 = centerToY(secondAngle, -back);
+    var x1 = centerToX(secondAngle, -SECOND_HAND_BACK_LENGTH);
+    var y1 = centerToY(secondAngle, -SECOND_HAND_BACK_LENGTH);
 
     // End point
     var x2 = centerToX(secondAngle, secondLen);
     var y2 = centerToY(secondAngle, secondLen);
 
     dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
-    dc.setPenWidth(2);
+    dc.setPenWidth(SECOND_HAND_WIDTH);
     dc.drawLine(x1, y1, x2, y2);
   }
 
@@ -183,67 +204,6 @@ class ModernWatchDrawer {
     dc.setPenWidth(1);
     dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
     dc.drawCircle(cx, cy, 6);
-  }
-
-  function drawDate(dc as Dc) as Void {
-    var info = Gregorian.utcInfo(Time.today(), Time.FORMAT_MEDIUM);
-    var theDate = info.day_of_week + " " + info.day.toString();
-    var dayWidth = dc.getTextDimensions(info.day_of_week, dataFont)[0];
-    var dateWidth = dc.getTextDimensions(theDate, dataFont)[0];
-    var spaceWidth = dc.getTextDimensions(" ", dataFont)[0];
-    var fontHeight = dc.getTextDimensions("31", dataFont)[1];
-    var cornerX = cx - dateWidth / 2;
-    var cornerY = cy + 25;
-
-    dc.setColor(Gfx.COLOR_WHITE, backgroundColor);
-    dc.drawText(cornerX, cornerY, dataFont, theDate, Gfx.TEXT_JUSTIFY_LEFT);
-    dc.setPenWidth(1);
-    var dayTotalWidth = dayWidth + spaceWidth / 2 + 1;
-    dc.drawRoundedRectangle(cornerX - 1, cornerY, dateWidth + 3, fontHeight, 3);
-    var lineX = cornerX + dayTotalWidth;
-    dc.drawLine(lineX, cornerY, lineX, cornerY + fontHeight - 1);
-  }
-
-  function drawDiamondHand(
-    dc as Dc,
-    cx as Float,
-    cy as Float,
-    angle as Float,
-    length as Float,
-    width as Float,
-    baseLen as Float
-  ) as Void {
-    // Calcul des positions des 4 points du losange
-    var sinA = Math.sin(angle);
-    var cosA = Math.cos(angle);
-
-    // Pointe avant
-    var tipX = cx + sinA * length;
-    var tipY = cy - cosA * length;
-
-    // Pointe arrière
-    var backX = cx - sinA * baseLen;
-    var backY = cy + cosA * baseLen;
-
-    // Largeur sur les côtés (perpendiculaire à l’angle)
-    var perpA = angle + Math.PI / 2;
-    var wSin = Math.sin(perpA);
-    var wCos = Math.cos(perpA);
-
-    var sideX1 = cx + (wSin * width) / 2;
-    var sideY1 = cy - (wCos * width) / 2;
-    var sideX2 = cx - (wSin * width) / 2;
-    var sideY2 = cy + (wCos * width) / 2;
-
-    // Les 4 sommets du polygone (ordre important)
-    var points = [
-      [tipX, tipY],
-      [sideX1, sideY1],
-      [backX, backY],
-      [sideX2, sideY2],
-    ];
-    dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_WHITE);
-    dc.fillPolygon(points);
   }
 
   private function centerToX(angleDeg as Number, dist as Number) as Float {
