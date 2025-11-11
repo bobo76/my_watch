@@ -36,7 +36,7 @@ class ModernWatchDrawer {
 
   function drawBatteryPercent(dc as Dc) as Void {
     var battery = System.getSystemStats().battery;
-    if (battery > 40) {
+    if (!WatchLogic.shouldShowBatteryPercent(battery)) {
       return;
     }
     var batteryText = battery.format("%.0f") + " %";
@@ -75,16 +75,8 @@ class ModernWatchDrawer {
   function drawTicher(dc as Dc) as Void {
     var radius = (maxRadius / 3) * 2 + 2;
     var battery = System.getSystemStats().battery;
-    var batteryAngle = (battery / 100.0) * 360;
-    var batteryColor;
-
-    if (battery <= 20) {
-      batteryColor = Gfx.COLOR_RED;
-    } else if (battery <= 30) {
-      batteryColor = Gfx.COLOR_YELLOW;
-    } else {
-      batteryColor = Gfx.COLOR_GREEN;
-    }
+    var batteryAngle = WatchLogic.calculateBatteryAngle(battery);
+    var batteryColor = WatchLogic.getBatteryColorModern(battery);
 
     // Draw 60 tick marks
     for (var i = 0; i < 60; i += 1) {
@@ -137,7 +129,7 @@ class ModernWatchDrawer {
 
   function drawHourHands(dc as Dc) as Void {
     var now = System.getClockTime();
-    var hourAngle = (((now.hour % 12) + now.min / 60.0) * 30).toNumber();
+    var hourAngle = WatchLogic.calculateHourAngle(now.hour, now.min).toNumber();
     var hourLen = (maxRadius * 0.55).toNumber();
 
     dc.setPenWidth(5);
@@ -152,7 +144,7 @@ class ModernWatchDrawer {
 
   function drawMinuteHands(dc as Dc) as Void {
     var now = System.getClockTime();
-    var minuteAngle = (now.min * 6 + now.sec / 10.0).toNumber();
+    var minuteAngle = WatchLogic.calculateMinuteAngle(now.min, now.sec).toNumber();
     var minuteLen = (maxRadius * 0.75).toNumber();
 
     dc.setPenWidth(3);
@@ -169,7 +161,7 @@ class ModernWatchDrawer {
     var now = System.getClockTime();
     var secondLen = (maxRadius * 0.85).toNumber(); // your preferred second hand length
     var back = 15; // how far past the center
-    var secondAngle = now.sec * 6;
+    var secondAngle = WatchLogic.calculateSecondAngle(now.sec);
 
     // Start point (behind center)
     var x1 = centerToX(secondAngle, -back);

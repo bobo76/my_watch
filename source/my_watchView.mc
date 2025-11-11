@@ -10,6 +10,8 @@ class my_watchView extends WatchUi.WatchFace {
     WatchFace.initialize();
     drawer = new ModernWatchDrawer();
     onSleep = false;
+
+    // runTests();
   }
 
   // Load your resources here

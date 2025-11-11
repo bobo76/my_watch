@@ -16,3 +16,4 @@ This is a Garmin Connect IQ watch application project.
 - Follow Monkey C conventions and best practices
 - Consider device compatibility and resource constraints
 - Test on target devices when making changes
+- when making changes to code, alwayse verify if it comile, before and after
