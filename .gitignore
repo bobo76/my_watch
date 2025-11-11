@@ -32,3 +32,6 @@ config.json
 *.bak
 *.swp
 *.tmp
+
+# claude
+/.claude/*
