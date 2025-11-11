@@ -11,7 +11,7 @@ class ModernWatchDrawer {
   var h;
   var cx;
   var cy;
-  var maxRadius;
+  var maxRadius as Number = 0;
   var backgroundColor;
   var dataFont;
 
@@ -34,48 +34,6 @@ class ModernWatchDrawer {
     maxRadius = (w < h ? w : h) / 2;
   }
 
-  function drawTicher(dc as Dc) as Void {
-    var radius = (maxRadius / 3) * 2 + 2;
-    var battery = System.getSystemStats().battery;
-    var batteryAngle = (battery / 100.0) * 360;
-    var batteryColor;
-
-    if (battery <= 20) {
-      batteryColor = Gfx.COLOR_RED;
-    } else if (battery <= 30) {
-      batteryColor = Gfx.COLOR_YELLOW;
-    } else {
-      batteryColor = Gfx.COLOR_GREEN;
-    }
-
-    // Draw 60 tick marks
-    for (var i = 0; i < 60; i += 1) {
-      var angle = (i / 60.0) * 2 * Math.PI; // full circle
-      var degre = (i / 60.0) * 360;
-      var isHour = i % 5 == 0;
-      var innerR = radius - 8;
-      var endR = isHour ? radius + 6 : radius;
-      var squareBegin = endR + 8;
-      var squareEnd = squareBegin + 10;
-
-      if (degre <= batteryAngle) {
-        dc.setColor(batteryColor, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(4);
-      } else {
-        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(2);
-      }
-
-      drawAngleLine(angle, innerR, endR, dc);
-
-      if (isHour && i % 15 != 0) {
-        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(6);
-        drawAngleLine(angle, squareBegin, squareEnd, dc);
-      }
-    }
-  }
-
   function drawBatteryPercent(dc as Dc) as Void {
     var battery = System.getSystemStats().battery;
     if (battery > 40) {
@@ -94,6 +52,67 @@ class ModernWatchDrawer {
     );
   }
 
+  function drawDateWithBackground(dc as Dc) as Void {
+    var info = Gregorian.utcInfo(Time.today(), Time.FORMAT_MEDIUM);
+    var theDate = info.day_of_week + " " + info.day.toString();
+    var dateWidth = dc.getTextDimensions(theDate, dataFont)[0];
+    var fontHeight = dc.getTextDimensions("31", dataFont)[1];
+    var cornerX = cx - dateWidth / 2;
+    var cornerY = cy + 25;
+
+    dc.setColor(Gfx.COLOR_LT_GRAY, backgroundColor);
+    dc.fillRoundedRectangle(
+      cornerX - 4,
+      cornerY + 1,
+      dateWidth + 6,
+      fontHeight - 1,
+      4
+    );
+    dc.setColor(backgroundColor, Gfx.COLOR_TRANSPARENT);
+    dc.drawText(cornerX, cornerY, dataFont, theDate, Gfx.TEXT_JUSTIFY_LEFT);
+  }
+
+  function drawTicher(dc as Dc) as Void {
+    var radius = (maxRadius / 3) * 2 + 2;
+    var battery = System.getSystemStats().battery;
+    var batteryAngle = (battery / 100.0) * 360;
+    var batteryColor;
+
+    if (battery <= 20) {
+      batteryColor = Gfx.COLOR_RED;
+    } else if (battery <= 30) {
+      batteryColor = Gfx.COLOR_YELLOW;
+    } else {
+      batteryColor = Gfx.COLOR_GREEN;
+    }
+
+    // Draw 60 tick marks
+    for (var i = 0; i < 60; i += 1) {
+      var degre = ((i / 60.0) * 360).toNumber();
+      var isHour = i % 5 == 0;
+      var innerR = radius - 8;
+      var endR = isHour ? radius + 6 : radius;
+      var squareBegin = endR + 8;
+      var squareEnd = squareBegin + 10;
+
+      if (degre <= batteryAngle) {
+        dc.setColor(batteryColor, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(4);
+      } else {
+        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(2);
+      }
+
+      drawAngleLine(degre, innerR, endR, dc);
+
+      if (isHour && i % 15 != 0) {
+        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.setPenWidth(6);
+        drawAngleLine(degre, squareBegin, squareEnd, dc);
+      }
+    }
+  }
+
   function drawHours(dc as Dc) as Void {
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
 
@@ -109,59 +128,56 @@ class ModernWatchDrawer {
     for (var i = 0; i < markers.size(); i += 1) {
       var label = markers[i][0];
       var angleDeg = markers[i][1];
-      var rad = Math.toRadians(angleDeg);
-      var x = cx + Math.sin(rad) * (maxRadius - markers[i][2]);
-      var y = cy - fontMidH - Math.cos(rad) * (maxRadius - markers[i][3]);
-
+      var x = centerToX(angleDeg, maxRadius - markers[i][2].toNumber());
+      var y =
+        centerToY(angleDeg, maxRadius - markers[i][3].toNumber()) - fontMidH;
       dc.drawText(x, y, Gfx.FONT_LARGE, label, Gfx.TEXT_JUSTIFY_CENTER);
     }
   }
 
   function drawHourHands(dc as Dc) as Void {
     var now = System.getClockTime();
-    var hourAngle = Math.toRadians(((now.hour % 12) + now.min / 60.0) * 30);
-    var hourLen = maxRadius * 0.55;
+    var hourAngle = (((now.hour % 12) + now.min / 60.0) * 30).toNumber();
+    var hourLen = (maxRadius * 0.55).toNumber();
 
     dc.setPenWidth(5);
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
     dc.drawLine(
       cx,
       cy,
-      cx + Math.sin(hourAngle) * hourLen,
-      cy - Math.cos(hourAngle) * hourLen
+      centerToX(hourAngle, hourLen),
+      centerToY(hourAngle, hourLen)
     );
   }
 
   function drawMinuteHands(dc as Dc) as Void {
     var now = System.getClockTime();
-    var minuteAngle = Math.toRadians(now.min * 6 + now.sec / 10.0);
-    var minuteLen = maxRadius * 0.75;
+    var minuteAngle = (now.min * 6 + now.sec / 10.0).toNumber();
+    var minuteLen = (maxRadius * 0.75).toNumber();
 
     dc.setPenWidth(3);
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
     dc.drawLine(
       cx,
       cy,
-      cx + Math.sin(minuteAngle) * minuteLen,
-      cy - Math.cos(minuteAngle) * minuteLen
+      centerToX(minuteAngle, minuteLen),
+      centerToY(minuteAngle, minuteLen)
     );
-
-    // drawDiamondHand(dc, cx, cy, minuteAngle, minuteLen, 10, 10);
   }
 
   function drawSecondHands(dc as Dc) as Void {
     var now = System.getClockTime();
-    var secondLen = maxRadius * 0.85; // your preferred second hand length
+    var secondLen = (maxRadius * 0.85).toNumber(); // your preferred second hand length
     var back = 15; // how far past the center
-    var secondAngle = Math.toRadians(now.sec * 6);
+    var secondAngle = now.sec * 6;
 
     // Start point (behind center)
-    var x1 = cx - Math.sin(secondAngle) * back;
-    var y1 = cy + Math.cos(secondAngle) * back;
+    var x1 = centerToX(secondAngle, -back);
+    var y1 = centerToY(secondAngle, -back);
 
     // End point
-    var x2 = cx + Math.sin(secondAngle) * secondLen;
-    var y2 = cy - Math.cos(secondAngle) * secondLen;
+    var x2 = centerToX(secondAngle, secondLen);
+    var y2 = centerToY(secondAngle, secondLen);
 
     dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
     dc.setPenWidth(2);
@@ -194,26 +210,6 @@ class ModernWatchDrawer {
     dc.drawRoundedRectangle(cornerX - 1, cornerY, dateWidth + 3, fontHeight, 3);
     var lineX = cornerX + dayTotalWidth;
     dc.drawLine(lineX, cornerY, lineX, cornerY + fontHeight - 1);
-  }
-
-  function drawDateWithBackground(dc as Dc) as Void {
-    var info = Gregorian.utcInfo(Time.today(), Time.FORMAT_MEDIUM);
-    var theDate = info.day_of_week + " " + info.day.toString();
-    var dateWidth = dc.getTextDimensions(theDate, dataFont)[0];
-    var fontHeight = dc.getTextDimensions("31", dataFont)[1];
-    var cornerX = cx - dateWidth / 2;
-    var cornerY = cy + 25;
-
-    dc.setColor(Gfx.COLOR_LT_GRAY, backgroundColor);
-    dc.fillRoundedRectangle(
-      cornerX - 4,
-      cornerY + 1,
-      dateWidth + 6,
-      fontHeight - 1,
-      4
-    );
-    dc.setColor(backgroundColor, Gfx.COLOR_TRANSPARENT);
-    dc.drawText(cornerX, cornerY, dataFont, theDate, Gfx.TEXT_JUSTIFY_LEFT);
   }
 
   function drawDiamondHand(
@@ -258,16 +254,26 @@ class ModernWatchDrawer {
     dc.fillPolygon(points);
   }
 
+  private function centerToX(angleDeg as Number, dist as Number) as Float {
+    var rad = Math.toRadians(angleDeg);
+    return cx + Math.sin(rad) * dist;
+  }
+
+  private function centerToY(angleDeg as Number, dist as Number) as Float {
+    var rad = Math.toRadians(angleDeg);
+    return cy - Math.cos(rad) * dist;
+  }
+
   private function drawAngleLine(
-    angle as Float,
+    angle as Number,
     innerR as Integer,
     endR as Integer,
     dc as Dc
   ) as Void {
-    var x1 = cx + Math.sin(angle) * innerR;
-    var y1 = cy - Math.cos(angle) * innerR;
-    var x2 = cx + Math.sin(angle) * endR;
-    var y2 = cy - Math.cos(angle) * endR;
+    var x1 = centerToX(angle, innerR);
+    var y1 = centerToY(angle, innerR);
+    var x2 = centerToX(angle, endR);
+    var y2 = centerToY(angle, endR);
 
     dc.drawLine(x1, y1, x2, y2);
   }
