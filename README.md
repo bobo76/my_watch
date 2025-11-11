@@ -96,9 +96,7 @@ See [TESTING.md](TESTING.md) for detailed testing instructions.
 Quick start:
 ```monkey-c
 // Add to my_watchApp.mc initialize() for debug builds
-if (DEBUG) {
   runTests();
-}
 ```
 
 ### Test Coverage
@@ -154,7 +152,6 @@ my_watch/
 - Cached system calls (reduced from 5 to 2 per frame)
 - Named constants calculated once
 - Conditional second hand rendering during sleep
-- Efficient polar coordinate calculations
 
 ## Customization
 
@@ -176,20 +173,9 @@ const MINUTE_HAND_LENGTH_RATIO = 0.75;
 const SECOND_HAND_LENGTH_RATIO = 0.85;
 ```
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Run tests to ensure everything works
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
 ### Code Style
 
 - Use explicit type declarations
-- Extract magic numbers to constants
 - Add unit tests for new logic functions
 - Follow Monkey C conventions
 - Keep drawing code separate from logic
@@ -210,19 +196,12 @@ const SECOND_HAND_LENGTH_RATIO = 0.85;
 - Verify sleep mode is working
 - Profile with Garmin simulator
 
-## License
-
-[Add your license here]
-
 ## Acknowledgments
 
 - Built with Garmin Connect IQ SDK
 - Tested on Garmin Forerunner 245 Music
 - Unit testing framework custom-built for Monkey C
 
-## Contact
-
-[Add your contact information]
 
 ---
 
