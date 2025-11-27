@@ -5,17 +5,16 @@ import Toybox.Graphics;
 // Pure logic functions for watch calculations
 // These functions contain no drawing code and can be easily tested
 class WatchLogic {
-
   // Calculate hour hand angle in degrees (0-360)
   // hour: 0-23, min: 0-59
-  static function calculateHourAngle(hour as Number, min as Number) as Float {
-    return ((hour % 12) + min / 60.0) * 30;
+  static function calculateHourAngle(hour as Number, min as Number) as Number {
+    return (((hour % 12) + min / 60.0) * 30).toNumber();
   }
 
   // Calculate minute hand angle in degrees (0-360)
   // min: 0-59, sec: 0-59
-  static function calculateMinuteAngle(min as Number, sec as Number) as Float {
-    return min * 6 + sec / 10.0;
+  static function calculateMinuteAngle(min as Number, sec as Number) as Number {
+    return (min * 6 + sec / 10.0).toNumber();
   }
 
   // Calculate second hand angle in degrees (0-360)
@@ -57,7 +56,11 @@ class WatchLogic {
   // angleDeg: angle in degrees (0 = top, 90 = right)
   // dist: distance from center
   // cx: center X coordinate
-  static function polarToX(angleDeg as Number, dist as Number, cx as Number) as Float {
+  static function polarToX(
+    angleDeg as Number,
+    dist as Number,
+    cx as Number
+  ) as Float {
     var rad = Math.toRadians(angleDeg);
     return cx + Math.sin(rad) * dist;
   }
@@ -66,7 +69,11 @@ class WatchLogic {
   // angleDeg: angle in degrees (0 = top, 90 = right)
   // dist: distance from center
   // cy: center Y coordinate
-  static function polarToY(angleDeg as Number, dist as Number, cy as Number) as Float {
+  static function polarToY(
+    angleDeg as Number,
+    dist as Number,
+    cy as Number
+  ) as Float {
     var rad = Math.toRadians(angleDeg);
     return cy - Math.cos(rad) * dist;
   }

@@ -101,10 +101,10 @@ class ModernWatchDrawer {
     for (var i = 0; i < 60; i += 1) {
       var degre = ((i / 60.0) * 360).toNumber();
       var isHour = i % 5 == 0;
-      var innerR = radius - 8;
+      var innerR = radius - 9;
       var endR = isHour ? radius + 6 : radius;
       var squareBegin = endR + 8;
-      var squareEnd = squareBegin + 10;
+      var squareEnd = squareBegin + 14;
 
       if (degre <= batteryAngle) {
         dc.setColor(batteryColor, Gfx.COLOR_TRANSPARENT);
@@ -118,8 +118,7 @@ class ModernWatchDrawer {
 
       if (isHour && i % 15 != 0) {
         dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(6);
-        drawAngleLine(degre, squareBegin, squareEnd, dc);
+        drawAngleRectangle(degre, squareBegin, squareEnd, 6, dc);
       }
     }
   }
@@ -150,24 +149,18 @@ class ModernWatchDrawer {
     var hourAngle = WatchLogic.calculateHourAngle(
       cachedTime.hour,
       cachedTime.min
-    ).toNumber();
+    );
     var hourLen = (maxRadius * HOUR_HAND_LENGTH_RATIO).toNumber();
 
-    dc.setPenWidth(HOUR_HAND_WIDTH);
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-    dc.drawLine(
-      cx,
-      cy,
-      centerToX(hourAngle, hourLen),
-      centerToY(hourAngle, hourLen)
-    );
+    drawAngleRectangle(hourAngle, 0, hourLen, HOUR_HAND_WIDTH, dc);
   }
 
   function drawMinuteHands(dc as Dc) as Void {
     var minuteAngle = WatchLogic.calculateMinuteAngle(
       cachedTime.min,
       cachedTime.sec
-    ).toNumber();
+    );
     var minuteLen = (maxRadius * MINUTE_HAND_LENGTH_RATIO).toNumber();
 
     dc.setPenWidth(MINUTE_HAND_WIDTH);
@@ -228,5 +221,51 @@ class ModernWatchDrawer {
     var y2 = centerToY(angle, endR);
 
     dc.drawLine(x1, y1, x2, y2);
+  }
+
+  private function drawAngleRectangle(
+    angle as Number,
+    innerR as Integer,
+    endR as Integer,
+    width as Number,
+    dc as Dc
+  ) as Void {
+    var halfWidth = width / 2.0;
+
+    // Calculate perpendicular offset angle (in degrees)
+    var perpAngleLeft = angle - 90;
+    var perpAngleRight = angle + 90;
+
+    // Calculate 4 corners of the rectangle
+    var innerLeft = [
+      centerToX(angle, innerR) +
+        Math.sin(Math.toRadians(perpAngleLeft)) * halfWidth,
+      centerToY(angle, innerR) -
+        Math.cos(Math.toRadians(perpAngleLeft)) * halfWidth,
+    ];
+
+    var innerRight = [
+      centerToX(angle, innerR) +
+        Math.sin(Math.toRadians(perpAngleRight)) * halfWidth,
+      centerToY(angle, innerR) -
+        Math.cos(Math.toRadians(perpAngleRight)) * halfWidth,
+    ];
+
+    var outerRight = [
+      centerToX(angle, endR) +
+        Math.sin(Math.toRadians(perpAngleRight)) * halfWidth,
+      centerToY(angle, endR) -
+        Math.cos(Math.toRadians(perpAngleRight)) * halfWidth,
+    ];
+
+    var outerLeft = [
+      centerToX(angle, endR) +
+        Math.sin(Math.toRadians(perpAngleLeft)) * halfWidth,
+      centerToY(angle, endR) -
+        Math.cos(Math.toRadians(perpAngleLeft)) * halfWidth,
+    ];
+
+    // Draw filled rectangle
+    dc.fillPolygon([innerLeft, innerRight, outerRight, outerLeft]);
   }
 }
