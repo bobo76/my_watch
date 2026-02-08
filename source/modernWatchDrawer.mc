@@ -8,7 +8,6 @@ using Toybox.System as Sys;
 
 class ModernWatchDrawer {
   // Layout constants
-  var batteryArcWidth as Number = 10;
   var w as Number = 0;
   var h as Number = 0;
   var cx as Number = 0;
@@ -16,12 +15,6 @@ class ModernWatchDrawer {
   var maxRadius as Number = 0;
   var backgroundColor as Number = 0x000055;
   var dataFont as Graphics.FontDefinition = Graphics.FONT_TINY;
-
-  // Color constants
-  var darkNavyBlue as Number = 0x000022; // Dark Navy Blue
-  var darkOrange as Number = 0xcc6600; // Dark Orange
-  var navyBlue as Number = 0x000055; // Navy Blue
-  var darkMediumBlue as Number = 0x000066; // Dark Medium Blue (was octal, now hex)
 
   // Drawing constants
   const TICK_RADIUS_RATIO = 0.66;
@@ -33,13 +26,31 @@ class ModernWatchDrawer {
   const MINUTE_HAND_WIDTH = 3;
   const SECOND_HAND_WIDTH = 2;
 
+  // Tick mark geometry
+  const TICK_INNER_OFFSET = 9;
+  const TICK_HOUR_OUTER_OFFSET = 6;
+  const TICK_SQUARE_GAP = 8;
+  const TICK_SQUARE_LENGTH = 14;
+  const TICK_SQUARE_WIDTH = 6;
+  const TICK_BATTERY_PEN_WIDTH = 4;
+  const TICK_NORMAL_PEN_WIDTH = 2;
+
+  // Date display
+  const DATE_OFFSET_Y = 25;
+  const DATE_PADDING_X = 4;
+  const DATE_PADDING_W = 6;
+  const DATE_PADDING_TOP = 1;
+  const DATE_CORNER_RADIUS = 4;
+
+  // Center circle
+  const CENTER_DOT_RADIUS = 4;
+  const CENTER_RING_RADIUS = 6;
+
   // Cached system values (updated each frame)
   var cachedBattery as Float = 100.0;
   var cachedTime as System.ClockTime?;
 
   function initializeContext(dc as Dc) as Void {
-    backgroundColor = navyBlue;
-    dataFont = Gfx.FONT_TINY;
     dc.setColor(backgroundColor, backgroundColor);
     dc.clear();
     dc.setAntiAlias(true);
@@ -50,7 +61,6 @@ class ModernWatchDrawer {
     cy = h / 2;
     maxRadius = (w < h ? w : h) / 2;
 
-    // Cache system values to avoid repeated expensive calls
     cachedBattery = System.getSystemStats().battery;
     cachedTime = System.getClockTime();
   }
@@ -60,16 +70,8 @@ class ModernWatchDrawer {
       return;
     }
     var batteryText = cachedBattery.format("%.0f") + " %";
-    var percentWidth = dc.getTextDimensions(batteryText, dataFont)[0];
     dc.setColor(Gfx.COLOR_LT_GRAY, backgroundColor);
-
-    dc.drawText(
-      cx - percentWidth / 2,
-      (cy / 3) * 2,
-      dataFont,
-      batteryText,
-      Gfx.TEXT_JUSTIFY_LEFT
-    );
+    dc.drawText(cx, (cy * 2) / 3, dataFont, batteryText, Gfx.TEXT_JUSTIFY_CENTER);
   }
 
   function drawDateWithBackground(dc as Dc) as Void {
@@ -78,15 +80,15 @@ class ModernWatchDrawer {
     var dateWidth = dc.getTextDimensions(theDate, dataFont)[0];
     var fontHeight = dc.getTextDimensions("31", dataFont)[1];
     var cornerX = cx - dateWidth / 2;
-    var cornerY = cy + 25;
+    var cornerY = cy + DATE_OFFSET_Y;
 
     dc.setColor(Gfx.COLOR_LT_GRAY, backgroundColor);
     dc.fillRoundedRectangle(
-      cornerX - 4,
-      cornerY + 1,
-      dateWidth + 6,
-      fontHeight - 1,
-      4
+      cornerX - DATE_PADDING_X,
+      cornerY + DATE_PADDING_TOP,
+      dateWidth + DATE_PADDING_W,
+      fontHeight - DATE_PADDING_TOP,
+      DATE_CORNER_RADIUS
     );
     dc.setColor(backgroundColor, Gfx.COLOR_TRANSPARENT);
     dc.drawText(cornerX, cornerY, dataFont, theDate, Gfx.TEXT_JUSTIFY_LEFT);
@@ -97,28 +99,27 @@ class ModernWatchDrawer {
     var batteryAngle = WatchLogic.calculateBatteryAngle(cachedBattery);
     var batteryColor = WatchLogic.getBatteryColorModern(cachedBattery);
 
-    // Draw 60 tick marks
     for (var i = 0; i < 60; i += 1) {
       var degre = ((i / 60.0) * 360).toNumber();
       var isHour = i % 5 == 0;
-      var innerR = radius - 9;
-      var endR = isHour ? radius + 6 : radius;
-      var squareBegin = endR + 8;
-      var squareEnd = squareBegin + 14;
+      var innerR = radius - TICK_INNER_OFFSET;
+      var endR = isHour ? radius + TICK_HOUR_OUTER_OFFSET : radius;
+      var squareBegin = endR + TICK_SQUARE_GAP;
+      var squareEnd = squareBegin + TICK_SQUARE_LENGTH;
 
       if (degre <= batteryAngle) {
         dc.setColor(batteryColor, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(4);
+        dc.setPenWidth(TICK_BATTERY_PEN_WIDTH);
       } else {
         dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(2);
+        dc.setPenWidth(TICK_NORMAL_PEN_WIDTH);
       }
 
       drawAngleLine(degre, innerR, endR, dc);
 
       if (isHour && i % 15 != 0) {
         dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-        drawAngleRectangle(degre, squareBegin, squareEnd, 6, dc);
+        drawAngleRectangle(degre, squareBegin, squareEnd, TICK_SQUARE_WIDTH, dc);
       }
     }
   }
@@ -126,7 +127,6 @@ class ModernWatchDrawer {
   function drawHours(dc as Dc) as Void {
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
 
-    // Array of (text, angle, x offset, y offset)
     var fontMidH = dc.getTextDimensions("6", Gfx.FONT_LARGE)[1] / 2;
     var markers = [
       ["12", 0, 0, fontMidH],
@@ -146,6 +146,7 @@ class ModernWatchDrawer {
   }
 
   function drawHourHands(dc as Dc) as Void {
+    if (cachedTime == null) { return; }
     var hourAngle = WatchLogic.calculateHourAngle(
       cachedTime.hour,
       cachedTime.min
@@ -157,6 +158,7 @@ class ModernWatchDrawer {
   }
 
   function drawMinuteHands(dc as Dc) as Void {
+    if (cachedTime == null) { return; }
     var minuteAngle = WatchLogic.calculateMinuteAngle(
       cachedTime.min,
       cachedTime.sec
@@ -174,14 +176,12 @@ class ModernWatchDrawer {
   }
 
   function drawSecondHands(dc as Dc) as Void {
+    if (cachedTime == null) { return; }
     var secondLen = (maxRadius * SECOND_HAND_LENGTH_RATIO).toNumber();
     var secondAngle = WatchLogic.calculateSecondAngle(cachedTime.sec);
 
-    // Start point (behind center)
     var x1 = centerToX(secondAngle, -SECOND_HAND_BACK_LENGTH);
     var y1 = centerToY(secondAngle, -SECOND_HAND_BACK_LENGTH);
-
-    // End point
     var x2 = centerToX(secondAngle, secondLen);
     var y2 = centerToY(secondAngle, secondLen);
 
@@ -192,21 +192,19 @@ class ModernWatchDrawer {
 
   function drawCenterCircle(dc as Dc) as Void {
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
-    dc.fillCircle(cx, cy, 4);
+    dc.fillCircle(cx, cy, CENTER_DOT_RADIUS);
 
     dc.setPenWidth(1);
     dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
-    dc.drawCircle(cx, cy, 6);
+    dc.drawCircle(cx, cy, CENTER_RING_RADIUS);
   }
 
   private function centerToX(angleDeg as Number, dist as Number) as Float {
-    var rad = Math.toRadians(angleDeg);
-    return cx + Math.sin(rad) * dist;
+    return WatchLogic.polarToX(angleDeg, dist, cx);
   }
 
   private function centerToY(angleDeg as Number, dist as Number) as Float {
-    var rad = Math.toRadians(angleDeg);
-    return cy - Math.cos(rad) * dist;
+    return WatchLogic.polarToY(angleDeg, dist, cy);
   }
 
   private function drawAngleLine(
@@ -215,12 +213,10 @@ class ModernWatchDrawer {
     endR as Integer,
     dc as Dc
   ) as Void {
-    var x1 = centerToX(angle, innerR);
-    var y1 = centerToY(angle, innerR);
-    var x2 = centerToX(angle, endR);
-    var y2 = centerToY(angle, endR);
-
-    dc.drawLine(x1, y1, x2, y2);
+    dc.drawLine(
+      centerToX(angle, innerR), centerToY(angle, innerR),
+      centerToX(angle, endR), centerToY(angle, endR)
+    );
   }
 
   private function drawAngleRectangle(
@@ -231,41 +227,24 @@ class ModernWatchDrawer {
     dc as Dc
   ) as Void {
     var halfWidth = width / 2.0;
+    var rad = Math.toRadians(angle);
+    var sinA = Math.sin(rad);
+    var cosA = Math.cos(rad);
 
-    // Calculate perpendicular offset angle (in degrees)
-    var perpAngleLeft = angle - 90;
-    var perpAngleRight = angle + 90;
+    // Perpendicular offsets: sin(a±90) = ±cos(a), cos(a±90) = ∓sin(a)
+    var perpX = cosA * halfWidth;
+    var perpY = sinA * halfWidth;
 
-    // Calculate 4 corners of the rectangle
-    var innerLeft = [
-      centerToX(angle, innerR) +
-        Math.sin(Math.toRadians(perpAngleLeft)) * halfWidth,
-      centerToY(angle, innerR) -
-        Math.cos(Math.toRadians(perpAngleLeft)) * halfWidth,
-    ];
+    var innerX = cx + sinA * innerR;
+    var innerY = cy - cosA * innerR;
+    var outerX = cx + sinA * endR;
+    var outerY = cy - cosA * endR;
 
-    var innerRight = [
-      centerToX(angle, innerR) +
-        Math.sin(Math.toRadians(perpAngleRight)) * halfWidth,
-      centerToY(angle, innerR) -
-        Math.cos(Math.toRadians(perpAngleRight)) * halfWidth,
-    ];
-
-    var outerRight = [
-      centerToX(angle, endR) +
-        Math.sin(Math.toRadians(perpAngleRight)) * halfWidth,
-      centerToY(angle, endR) -
-        Math.cos(Math.toRadians(perpAngleRight)) * halfWidth,
-    ];
-
-    var outerLeft = [
-      centerToX(angle, endR) +
-        Math.sin(Math.toRadians(perpAngleLeft)) * halfWidth,
-      centerToY(angle, endR) -
-        Math.cos(Math.toRadians(perpAngleLeft)) * halfWidth,
-    ];
-
-    // Draw filled rectangle
-    dc.fillPolygon([innerLeft, innerRight, outerRight, outerLeft]);
+    dc.fillPolygon([
+      [innerX - perpX, innerY - perpY],
+      [innerX + perpX, innerY + perpY],
+      [outerX + perpX, outerY + perpY],
+      [outerX - perpX, outerY - perpY],
+    ]);
   }
 }
