@@ -52,6 +52,17 @@ class WatchLogic {
     }
   }
 
+  // Get battery color for stylish drawer (orange accent)
+  static function getBatteryColorStylish(battery as Float) as Number {
+    if (battery <= 15) {
+      return Graphics.COLOR_RED;
+    } else if (battery <= 30) {
+      return Graphics.COLOR_YELLOW;
+    } else {
+      return Graphics.COLOR_GREEN;
+    }
+  }
+
   // Convert polar coordinates (angle in degrees, distance) to X coordinate
   // angleDeg: angle in degrees (0 = top, 90 = right)
   // dist: distance from center

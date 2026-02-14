@@ -26,6 +26,7 @@ class WatchLogicTests {
     testBatteryAngle();
     testBatteryColor();
     testBatteryColorModern();
+    testBatteryColorStylish();
     testShouldShowBatteryPercent();
 
     framework.printSummary();
@@ -398,6 +399,36 @@ class WatchLogicTests {
 
   function testBatteryColorModern_50() as Void {
     var color = WatchLogic.getBatteryColorModern(50.0);
+    framework.assertEqual(color, Graphics.COLOR_GREEN, "50% should be GREEN");
+  }
+
+  function testBatteryColorStylish() as Void {
+    framework.runTest(
+      "Battery color stylish - 10%",
+      method(:testBatteryColorStylish_10)
+    );
+    framework.runTest(
+      "Battery color stylish - 20%",
+      method(:testBatteryColorStylish_20)
+    );
+    framework.runTest(
+      "Battery color stylish - 50%",
+      method(:testBatteryColorStylish_50)
+    );
+  }
+
+  function testBatteryColorStylish_10() as Void {
+    var color = WatchLogic.getBatteryColorStylish(10.0);
+    framework.assertEqual(color, Graphics.COLOR_RED, "10% should be RED");
+  }
+
+  function testBatteryColorStylish_20() as Void {
+    var color = WatchLogic.getBatteryColorStylish(20.0);
+    framework.assertEqual(color, Graphics.COLOR_YELLOW, "20% should be YELLOW");
+  }
+
+  function testBatteryColorStylish_50() as Void {
+    var color = WatchLogic.getBatteryColorStylish(50.0);
     framework.assertEqual(color, Graphics.COLOR_GREEN, "50% should be GREEN");
   }
 

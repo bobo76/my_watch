@@ -3,12 +3,12 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class my_watchView extends WatchUi.WatchFace {
-  var drawer as ModernWatchDrawer;
+  var drawer as StylishWatchDrawer;
   var isAsleep as Boolean;
 
   function initialize() {
     WatchFace.initialize();
-    drawer = new ModernWatchDrawer();
+    drawer = new StylishWatchDrawer();
     isAsleep = false;
   }
 
@@ -22,16 +22,17 @@ class my_watchView extends WatchUi.WatchFace {
 
   function onUpdate(dc as Dc) as Void {
     drawer.initializeContext(dc);
+    drawer.drawTickMarks(dc);
+    drawer.drawHourNumbers(dc);
+    drawer.drawInnerRing(dc);
+    drawer.drawDate(dc);
     drawer.drawBatteryPercent(dc);
-    drawer.drawDateWithBackground(dc);
-    drawer.drawTicker(dc);
-    drawer.drawHours(dc);
-    drawer.drawHourHands(dc);
-    drawer.drawMinuteHands(dc);
+    drawer.drawHourHand(dc);
+    drawer.drawMinuteHand(dc);
     if (!isAsleep) {
-      drawer.drawSecondHands(dc);
+      drawer.drawSecondHand(dc);
     }
-    drawer.drawCenterCircle(dc);
+    drawer.drawCenterDot(dc);
   }
 
   function onHide() as Void {}
