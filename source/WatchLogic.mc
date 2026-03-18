@@ -32,9 +32,9 @@ class WatchLogic {
   // Get battery color based on level
   // Returns color constant: RED, YELLOW, or GREEN
   static function getBatteryColor(battery as Float) as Number {
-    if (battery <= 10) {
+    if (battery <= 15) {
       return Graphics.COLOR_RED;
-    } else if (battery <= 20) {
+    } else if (battery <= 30) {
       return Graphics.COLOR_YELLOW;
     } else {
       return Graphics.COLOR_GREEN;
@@ -44,17 +44,6 @@ class WatchLogic {
   // Get battery color for modern drawer (different thresholds)
   static function getBatteryColorModern(battery as Float) as Number {
     if (battery <= 20) {
-      return Graphics.COLOR_RED;
-    } else if (battery <= 30) {
-      return Graphics.COLOR_YELLOW;
-    } else {
-      return Graphics.COLOR_GREEN;
-    }
-  }
-
-  // Get battery color for stylish drawer (orange accent)
-  static function getBatteryColorStylish(battery as Float) as Number {
-    if (battery <= 15) {
       return Graphics.COLOR_RED;
     } else if (battery <= 30) {
       return Graphics.COLOR_YELLOW;

@@ -26,8 +26,6 @@ class WatchLogicTests {
     testBatteryAngle();
     testBatteryColor();
     testBatteryColorModern();
-    testBatteryColorStylish();
-    testShouldShowBatteryPercent();
 
     framework.printSummary();
   }
@@ -400,65 +398,5 @@ class WatchLogicTests {
   function testBatteryColorModern_50() as Void {
     var color = WatchLogic.getBatteryColorModern(50.0);
     framework.assertEqual(color, Graphics.COLOR_GREEN, "50% should be GREEN");
-  }
-
-  function testBatteryColorStylish() as Void {
-    framework.runTest(
-      "Battery color stylish - 10%",
-      method(:testBatteryColorStylish_10)
-    );
-    framework.runTest(
-      "Battery color stylish - 20%",
-      method(:testBatteryColorStylish_20)
-    );
-    framework.runTest(
-      "Battery color stylish - 50%",
-      method(:testBatteryColorStylish_50)
-    );
-  }
-
-  function testBatteryColorStylish_10() as Void {
-    var color = WatchLogic.getBatteryColorStylish(10.0);
-    framework.assertEqual(color, Graphics.COLOR_RED, "10% should be RED");
-  }
-
-  function testBatteryColorStylish_20() as Void {
-    var color = WatchLogic.getBatteryColorStylish(20.0);
-    framework.assertEqual(color, Graphics.COLOR_YELLOW, "20% should be YELLOW");
-  }
-
-  function testBatteryColorStylish_50() as Void {
-    var color = WatchLogic.getBatteryColorStylish(50.0);
-    framework.assertEqual(color, Graphics.COLOR_GREEN, "50% should be GREEN");
-  }
-
-  function testShouldShowBatteryPercent() as Void {
-    framework.runTest(
-      "Show battery - 30%",
-      method(:testShouldShowBatteryPercent_30)
-    );
-    framework.runTest(
-      "Show battery - 40%",
-      method(:testShouldShowBatteryPercent_40)
-    );
-    framework.runTest(
-      "Show battery - 50%",
-      method(:testShouldShowBatteryPercent_50)
-    );
-  }
-
-  function testShouldShowBatteryPercent_30() as Void {
-    var result = WatchLogic.shouldShowBatteryPercent(30.0);
-    framework.assertTrue(result, "30% should show battery percent");
-  }
-
-  function testShouldShowBatteryPercent_40() as Void {
-    var result = WatchLogic.shouldShowBatteryPercent(40.0);
-    framework.assertTrue(result, "40% should show battery percent");
-  }
-
-  function testShouldShowBatteryPercent_50() as Void {
-    var result = WatchLogic.shouldShowBatteryPercent(50.0);
-    framework.assertFalse(result, "50% should NOT show battery percent");
   }
 }

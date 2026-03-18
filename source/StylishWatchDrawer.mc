@@ -16,9 +16,9 @@ class StylishWatchDrawer {
 
   // Colors
   const COLOR_BACKGROUND = 0x000000;
-  const COLOR_ACCENT = 0xFF8800;
+  const COLOR_ACCENT = 0xff8800;
   const COLOR_TRACK = 0x222222;
-  const COLOR_HOUR_TEXT = 0xFFFFFF;
+  const COLOR_HOUR_TEXT = 0xffffff;
   const COLOR_INNER_RING = 0x555555;
   const COLOR_TICK = 0x666666;
 
@@ -31,19 +31,19 @@ class StylishWatchDrawer {
   const TICK_BATTERY_PEN = 3;
 
   // Hour numbers
-  const HOUR_NUMBER_RADIUS_RATIO = 0.82;
+  const HOUR_NUMBER_RADIUS_RATIO = 0.84;
 
   // Inner ring
   const INNER_RING_RADIUS_RATIO = 0.72;
 
   // Hand geometry
-  const HOUR_TIP_RATIO = 0.50;
+  const HOUR_TIP_RATIO = 0.5;
   const HOUR_WIDE_RATIO = 0.25;
   const HOUR_TAIL_RATIO = 0.12;
   const HOUR_HALF_WIDTH = 6;
 
-  const MINUTE_TIP_RATIO = 0.70;
-  const MINUTE_WIDE_RATIO = 0.10;
+  const MINUTE_TIP_RATIO = 0.7;
+  const MINUTE_WIDE_RATIO = 0.1;
   const MINUTE_TAIL_RATIO = 0.08;
   const MINUTE_HALF_WIDTH = 5;
 
@@ -59,7 +59,7 @@ class StylishWatchDrawer {
   const CENTER_DOT_RADIUS = 4;
 
   // Date position
-  const DATE_X_RATIO = 0.40;
+  const DATE_X_RATIO = 0.4;
 
   // Cached system values (updated each frame)
   var cachedBattery as Float = 100.0;
@@ -84,12 +84,13 @@ class StylishWatchDrawer {
   function drawTickMarks(dc as Dc) as Void {
     var radius = (maxRadius * TICK_RADIUS_RATIO).toNumber();
     var batteryAngle = WatchLogic.calculateBatteryAngle(cachedBattery);
-    var batteryColor = WatchLogic.getBatteryColorStylish(cachedBattery);
+    var batteryColor = WatchLogic.getBatteryColor(cachedBattery);
 
     for (var i = 0; i < 60; i += 1) {
       var angleDeg = ((i / 60.0) * 360).toNumber();
       var isHour = i % 5 == 0;
       var inBattery = angleDeg <= batteryAngle;
+      var innerR = radius - (isHour ? TICK_HOUR_LENGTH : TICK_MINUTE_LENGTH);
 
       if (inBattery) {
         dc.setPenWidth(isHour ? TICK_HOUR_PEN : TICK_BATTERY_PEN);
@@ -102,7 +103,6 @@ class StylishWatchDrawer {
         dc.setColor(COLOR_TICK, Gfx.COLOR_TRANSPARENT);
       }
 
-      var innerR = radius - (isHour ? TICK_HOUR_LENGTH : TICK_MINUTE_LENGTH);
       drawAngleLine(angleDeg, innerR, radius, dc);
     }
   }
@@ -110,14 +110,15 @@ class StylishWatchDrawer {
   // Layer 4: All 12 hour numbers
   function drawHourNumbers(dc as Dc) as Void {
     var radius = (maxRadius * HOUR_NUMBER_RADIUS_RATIO).toNumber();
-    var font = Gfx.FONT_XTINY;
+    var font = Gfx.FONT_TINY;
     var fontMidH = dc.getTextDimensions("12", font)[1] / 2;
     dc.setColor(COLOR_HOUR_TEXT, Gfx.COLOR_TRANSPARENT);
 
     for (var i = 0; i < 12; i += 1) {
       var angleDeg = i * 30;
       var hourNum = i == 0 ? 12 : i;
-      var label = hourNum < 10 ? "0" + hourNum.toString() : hourNum.toString();
+      //var label = hourNum < 10 ? "0" + hourNum.toString() : hourNum.toString();
+      var label = hourNum.toString();
 
       var x = centerToX(angleDeg, radius);
       var y = centerToY(angleDeg, radius) - fontMidH;
@@ -140,9 +141,15 @@ class StylishWatchDrawer {
     var dayOfWeek = dayNames[info.day_of_week - 1];
     var theDate = dayOfWeek + " " + info.day.toString();
 
-    var dateX = cx + (maxRadius * DATE_X_RATIO).toNumber();
-    dc.setColor(COLOR_HOUR_TEXT, Gfx.COLOR_TRANSPARENT);
-    dc.drawText(dateX, cy, Gfx.FONT_XTINY, theDate, Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER);
+    var dateX = cx + (maxRadius * DATE_X_RATIO).toNumber() - 4;
+    dc.setColor(Gfx.COLOR_ORANGE, Gfx.COLOR_TRANSPARENT);
+    dc.drawText(
+      dateX,
+      cy,
+      Gfx.FONT_GLANCE,
+      theDate,
+      Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER
+    );
   }
 
   // Layer 7: Battery % shown only when ≤40%
@@ -152,12 +159,20 @@ class StylishWatchDrawer {
     }
     var batteryText = cachedBattery.format("%.0f") + "%";
     dc.setColor(COLOR_ACCENT, Gfx.COLOR_TRANSPARENT);
-    dc.drawText(cx, (cy * 2) / 3, Gfx.FONT_XTINY, batteryText, Gfx.TEXT_JUSTIFY_CENTER);
+    dc.drawText(
+      cx,
+      (cy * 2) / 3,
+      Gfx.FONT_XTINY,
+      batteryText,
+      Gfx.TEXT_JUSTIFY_CENTER
+    );
   }
 
   // Layer 8: Hour hand — white diamond polygon
   function drawHourHand(dc as Dc) as Void {
-    if (cachedTime == null) { return; }
+    if (cachedTime == null) {
+      return;
+    }
     var hourAngle = WatchLogic.calculateHourAngle(
       cachedTime.hour,
       cachedTime.min
@@ -166,13 +181,22 @@ class StylishWatchDrawer {
     var wideDist = (maxRadius * HOUR_WIDE_RATIO).toNumber();
     var tailDist = (maxRadius * HOUR_TAIL_RATIO).toNumber();
 
-    dc.setColor(0xCCCCCC, Gfx.COLOR_TRANSPARENT);
-    drawDiamondHand(hourAngle, tipDist, wideDist, tailDist, HOUR_HALF_WIDTH, dc);
+    dc.setColor(0xcccccc, Gfx.COLOR_TRANSPARENT);
+    drawDiamondHand(
+      hourAngle,
+      tipDist,
+      wideDist,
+      tailDist,
+      HOUR_HALF_WIDTH,
+      dc
+    );
   }
 
   // Layer 9: Minute hand — white diamond polygon with outline
   function drawMinuteHand(dc as Dc) as Void {
-    if (cachedTime == null) { return; }
+    if (cachedTime == null) {
+      return;
+    }
     var minuteAngle = WatchLogic.calculateMinuteAngle(
       cachedTime.min,
       cachedTime.sec
@@ -182,12 +206,21 @@ class StylishWatchDrawer {
     var tailDist = (maxRadius * MINUTE_TAIL_RATIO).toNumber();
 
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-    drawDiamondHand(minuteAngle, tipDist, wideDist, tailDist, MINUTE_HALF_WIDTH, dc);
+    drawDiamondHand(
+      minuteAngle,
+      tipDist,
+      wideDist,
+      tailDist,
+      MINUTE_HALF_WIDTH,
+      dc
+    );
   }
 
   // Layer 10: Second hand — orange line with counterweight circle
   function drawSecondHand(dc as Dc) as Void {
-    if (cachedTime == null) { return; }
+    if (cachedTime == null) {
+      return;
+    }
     var secondAngle = WatchLogic.calculateSecondAngle(cachedTime.sec);
     var tipDist = (maxRadius * SECOND_TIP_RATIO).toNumber();
     var backDist = (maxRadius * SECOND_BACK_RATIO).toNumber();
@@ -264,8 +297,10 @@ class StylishWatchDrawer {
     dc as Dc
   ) as Void {
     dc.drawLine(
-      centerToX(angle, innerR), centerToY(angle, innerR),
-      centerToX(angle, endR), centerToY(angle, endR)
+      centerToX(angle, innerR),
+      centerToY(angle, innerR),
+      centerToX(angle, endR),
+      centerToY(angle, endR)
     );
   }
 }
