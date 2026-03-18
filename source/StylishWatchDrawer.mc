@@ -61,6 +61,14 @@ class StylishWatchDrawer {
   // Date position
   const DATE_X_RATIO = 0.4;
 
+  // Battery burn tracking — red ticks showing recently consumed battery
+  const BURN_WINDOW_HOURS = 8;
+  const BURN_LINE_PEN = 3;
+  const BURN_COLOR = 0xff4444;
+  var batteryTimes as Array<Number> = [];
+  var batteryValues as Array<Float> = [];
+  var lastRecordedBatteryInt as Number = -1;
+
   // Cached system values (updated each frame)
   var cachedBattery as Float = 100.0;
   var cachedTime as System.ClockTime?;
@@ -78,23 +86,37 @@ class StylishWatchDrawer {
 
     cachedBattery = System.getSystemStats().battery;
     cachedTime = System.getClockTime();
+    updateBatteryHistory();
   }
 
-  // Tick marks colored by battery level
+  // Tick marks colored by battery level, with burn zone overlay
   function drawTickMarks(dc as Dc) as Void {
     var radius = (maxRadius * TICK_RADIUS_RATIO).toNumber();
     var batteryAngle = WatchLogic.calculateBatteryAngle(cachedBattery);
     var batteryColor = WatchLogic.getBatteryColor(cachedBattery);
 
+    // Determine burn zone (recently consumed battery range)
+    var burnStartAngle = -1;
+    var burnEndAngle = -1;
+    if (batteryTimes.size() >= 2) {
+      var startBattery = batteryValues[0] as Float;
+      if (startBattery > cachedBattery) {
+        burnStartAngle = WatchLogic.calculateBatteryAngle(cachedBattery).toNumber();
+        burnEndAngle = WatchLogic.calculateBatteryAngle(startBattery).toNumber();
+      }
+    }
+
     for (var i = 0; i < 60; i += 1) {
       var angleDeg = ((i / 60.0) * 360).toNumber();
       var isHour = i % 5 == 0;
-      var inBattery = angleDeg <= batteryAngle;
       var innerR = radius - (isHour ? TICK_HOUR_LENGTH : TICK_MINUTE_LENGTH);
 
-      if (inBattery) {
+      if (angleDeg <= batteryAngle) {
         dc.setPenWidth(isHour ? TICK_HOUR_PEN : TICK_BATTERY_PEN);
         dc.setColor(batteryColor, Gfx.COLOR_TRANSPARENT);
+      } else if (burnStartAngle >= 0 && angleDeg > burnStartAngle && angleDeg <= burnEndAngle) {
+        dc.setPenWidth(BURN_LINE_PEN);
+        dc.setColor(BURN_COLOR, Gfx.COLOR_TRANSPARENT);
       } else if (isHour) {
         dc.setPenWidth(TICK_HOUR_PEN);
         dc.setColor(COLOR_HOUR_TEXT, Gfx.COLOR_TRANSPARENT);
@@ -288,6 +310,41 @@ class StylishWatchDrawer {
 
   private function centerToY(angleDeg as Number, dist as Number) as Float {
     return WatchLogic.polarToY(angleDeg, dist, cy);
+  }
+
+  private function updateBatteryHistory() as Void {
+    var batteryInt = cachedBattery.toNumber();
+    if (cachedTime == null || batteryInt == lastRecordedBatteryInt) {
+      return;
+    }
+
+    lastRecordedBatteryInt = batteryInt;
+
+    var nowEpochMin = WatchLogic.toEpochMinute(cachedTime.hour, cachedTime.min);
+
+    // Reset history if battery increased (charging detected)
+    if (
+      batteryValues.size() > 0 &&
+      cachedBattery > (batteryValues[batteryValues.size() - 1] as Float)
+    ) {
+      batteryTimes = [];
+      batteryValues = [];
+    }
+
+    batteryTimes.add(nowEpochMin);
+    batteryValues.add(cachedBattery);
+
+    // Prune entries older than window
+    var windowMinutes = BURN_WINDOW_HOURS * 60;
+    while (batteryTimes.size() > 0) {
+      var age = WatchLogic.minuteAge(nowEpochMin, batteryTimes[0] as Number);
+      if (age > windowMinutes) {
+        batteryTimes = batteryTimes.slice(1, null);
+        batteryValues = batteryValues.slice(1, null);
+      } else {
+        break;
+      }
+    }
   }
 
   private function drawAngleLine(

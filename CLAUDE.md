@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Garmin Connect IQ watch face application written in Monkey C, targeting the Forerunner 245 Music (fr245m). Priority order: **Battery efficiency > Readability > Features**.
+Garmin Connect IQ watch face application written in Monkey C, targeting the Forerunner 245 Music (fr245m). Battery lasts 5-6 days, so battery level changes roughly once per hour. Priority order: **Battery efficiency > Readability > Features**.
 
 ## Build Commands
 
@@ -19,7 +19,7 @@ SDK requirement: Connect IQ SDK 8.3.0+, API level 3.3.0+. Binary should stay und
 
 ## Testing
 
-46 unit tests in `source/WatchLogicTests.mc` using a custom framework (`source/TestFramework.mc`). Tests run in the Garmin simulator console.
+40 unit tests in `source/WatchLogicTests.mc` using a custom framework (`source/TestFramework.mc`). Tests run in the Garmin simulator console.
 
 To run tests, add `runTests();` to `my_watchApp.mc` `initialize()`, then build and check simulator console output. Tests cover all pure logic functions (angle calculations, battery logic, coordinate conversions).
 
@@ -34,12 +34,13 @@ Three-layer separation of concerns:
 - **App** (`my_watchApp.mc`): Entry point, lifecycle, settings changes
 - **View** (`my_watchView.mc`): WatchFace lifecycle, sleep state tracking, delegates drawing
 - **Drawers**: Rendering implementations, each self-contained
-  - `TacticalWatchDrawer.mc` — current active drawer (tactical/military style)
-  - `modernWatchDrawer.mc` — modern minimalist style
+  - `StylishWatchDrawer.mc` — current active drawer (diamond hands, battery-colored ticks, burn tracking)
+  - `TacticalWatchDrawer.mc` — tactical/military style (inactive)
+  - `modernWatchDrawer.mc` — modern minimalist style (inactive)
   - `classicWatchDrawer.mc` — classic style (inactive)
 - **Logic** (`WatchLogic.mc`): Pure static functions for calculations — no drawing code, fully unit-tested
 
-The view creates a drawer and calls its `drawWatchFace(dc, isAwake)` method on each update. Drawers cache system calls (battery, time) once per frame via `initializeContext()`.
+The view creates a drawer and calls individual draw methods (tick marks, hands, date, etc.) on each update. Drawers cache system calls (battery, time) once per frame via `initializeContext()`.
 
 ## Monkey C Conventions
 

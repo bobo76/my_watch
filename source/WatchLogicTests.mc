@@ -27,6 +27,10 @@ class WatchLogicTests {
     testBatteryColor();
     testBatteryColorModern();
 
+    // Battery burn tracking tests
+    testToEpochMinute();
+    testMinuteAge();
+
     framework.printSummary();
   }
 
@@ -398,5 +402,48 @@ class WatchLogicTests {
   function testBatteryColorModern_50() as Void {
     var color = WatchLogic.getBatteryColorModern(50.0);
     framework.assertEqual(color, Graphics.COLOR_GREEN, "50% should be GREEN");
+  }
+
+  // ========== Battery Burn Tracking Tests ==========
+
+  function testToEpochMinute() as Void {
+    framework.runTest("toEpochMinute - midnight", method(:testToEpochMinute_midnight));
+    framework.runTest("toEpochMinute - noon", method(:testToEpochMinute_noon));
+    framework.runTest("toEpochMinute - end of day", method(:testToEpochMinute_endOfDay));
+  }
+
+  function testToEpochMinute_midnight() as Void {
+    framework.assertEqual(WatchLogic.toEpochMinute(0, 0), 0, "0:00 should be 0");
+  }
+
+  function testToEpochMinute_noon() as Void {
+    framework.assertEqual(WatchLogic.toEpochMinute(12, 30), 750, "12:30 should be 750");
+  }
+
+  function testToEpochMinute_endOfDay() as Void {
+    framework.assertEqual(WatchLogic.toEpochMinute(23, 59), 1439, "23:59 should be 1439");
+  }
+
+  function testMinuteAge() as Void {
+    framework.runTest("minuteAge - normal", method(:testMinuteAge_normal));
+    framework.runTest("minuteAge - midnight wrap", method(:testMinuteAge_midnightWrap));
+    framework.runTest("minuteAge - same minute", method(:testMinuteAge_same));
+    framework.runTest("minuteAge - one min after midnight", method(:testMinuteAge_oneMinAfterMidnight));
+  }
+
+  function testMinuteAge_normal() as Void {
+    framework.assertEqual(WatchLogic.minuteAge(65, 5), 60, "65 - 5 should be 60");
+  }
+
+  function testMinuteAge_midnightWrap() as Void {
+    framework.assertEqual(WatchLogic.minuteAge(5, 1435), 10, "midnight wrap: 0:05 - 23:55 should be 10");
+  }
+
+  function testMinuteAge_same() as Void {
+    framework.assertEqual(WatchLogic.minuteAge(100, 100), 0, "same minute should be 0");
+  }
+
+  function testMinuteAge_oneMinAfterMidnight() as Void {
+    framework.assertEqual(WatchLogic.minuteAge(0, 1439), 1, "0:00 - 23:59 should be 1 minute");
   }
 }

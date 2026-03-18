@@ -83,4 +83,16 @@ class WatchLogic {
   static function shouldShowBatteryPercent(battery as Float) as Boolean {
     return battery <= 40;
   }
+
+  // Calculate epoch minute from hour (0-23) and minute (0-59)
+  // Returns 0..1439
+  static function toEpochMinute(hour as Number, min as Number) as Number {
+    return hour * 60 + min;
+  }
+
+  // Calculate age in minutes between two epoch minutes, handling midnight rollover
+  static function minuteAge(nowEpochMin as Number, entryEpochMin as Number) as Number {
+    return (nowEpochMin - entryEpochMin + 1440) % 1440;
+  }
+
 }
